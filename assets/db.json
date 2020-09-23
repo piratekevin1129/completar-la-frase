@@ -1,0 +1,18 @@
+{
+	"frase":"Ahí va la __serpiente__ de tierra caliente que cuando se rie se le ven los __dientes__ uy que está __demente__ critica la __gente__ porque come plátanos con __aguardiente__",
+	"respuesta":"Ahí va la serpiente de tierra caliente que cuando se rie se le ven los dientes uy que está demente critica la gente porque come plátanos con aguardiente",
+	"otros":[
+		"iguana",
+		"pies",
+		"enferma",
+		"hola",
+		"gaseosa"
+	],
+	"titulo_final":"¡Felicitaciones!",
+ 	"mensaje_final":"La frase está correcta",
+ 	"titulo_final_mal":"Lo sentimos  mucho :(",
+ 	"mensaje_final_mal":"Haz agotado todos los intentos",
+	"titulo_instrucciones":"¡Instrucciones!",
+	"mensaje_instrucciones":"Es momento de concentrarse",
+	"numero_intentos":3
+}

@@ -1,0 +1,239 @@
+/****************************MODAL**************************/
+
+#modal{
+    position: absolute;
+    width: 100%;
+    height: 464px;
+    top: 43px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+}
+.modal-off{
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.5s, visibility 0.5s;
+    -webkit-transition: opacity 0.5s, visibility 0.5s;
+}
+.modal-on{
+    opacity: 1;
+    visibility: visible;
+
+    transition: opacity 0.5s, visibility 0s;
+    -webkit-transition: opacity 0.5s, visibility 0s;
+}
+
+#modal-msg{
+    position: relative;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    width: 350px;
+    height: 125px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+
+    border-radius: 0px 5px 5px 0px;
+    background-color: #ECC52D;
+
+    transition: left 0.5s;
+    -webkit-transition: left 0.5s;
+}
+.modal-on #modal-msg{
+    left: 0px;
+}
+.modal-off #modal-msg{
+    left: -350px;
+}
+
+#modal-close-msg{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    right: 7px;
+    top: 7px;
+    z-index: 10;
+}
+#modal-close-msg::after,
+#modal-close-msg::before{
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 2px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    top: 50%;
+    top: calc(50% - 1px);
+    top: -moz-calc(50% - 1px);
+    left: 50%;
+    left: calc(50% - 6px);
+    left: -moz-calc(50% - 6px);
+
+    transform-origin: center;
+    -webkit-transform-origin: center;
+    -o-transform-origin: center;
+    background-color: #FFFFFF;
+}
+#modal-close-msg::after{
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+#modal-close-msg::before{
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+}
+#modal-close-msg:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.modal-continue-btn{
+    position: relative;
+    display: block;
+    width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    background: #eeeeee;
+    background: linear-gradient(270deg, #e2e2e2 0%, #FFFFFF 29%, #FFFFFF 40%, #9e9e9e 100%);
+    background: -moz-linear-gradient(270deg, #e2e2e2 0%, #FFFFFF 29%, #FFFFFF 40%, #9e9e9e 100%);
+    background: -webkit-linear-gradient(270deg, #e2e2e2 0%, #FFFFFF 29%, #FFFFFF 40%, #9e9e9e 100%);
+    background: -o-linear-gradient(270deg, #e2e2e2 0%, #FFFFFF 29%, #FFFFFF 40%, #9e9e9e 100%);
+    border: none;
+    box-sizing: border-box;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    color: #000000;
+    padding: 0px;
+    margin: 0px auto;
+    margin-top: 20px;
+    padding-right: 25px;
+    font-weight: normal;
+    line-height: normal;
+
+    box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.8);
+
+    transition: filter 0.2s, -webkit-filter 0.2s, -o-filter 0.2s;
+    -webkit-transition: filter 0.2s, -webkit-filter 0.2s, -o-filter 0.2s;
+}
+.modal-continue-btn:hover{
+    cursor: pointer;
+    filter: brightness(105%);
+    -webkit-filter: brightness(105%);
+    -o-filter: brightness(105%);
+}
+.modal-continue-btn::after{
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: #aaaaaa solid 2px;
+    top: 50%;
+    top: calc(50% - 15px);
+    top: -moz-calc(50% - 15px);
+    right: 5px;
+    background-position: center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-image: url(../images/right-arrow-icon.svg);
+
+    transition: border 0.2s;
+    -webkit-transition: border 0.2s;
+}
+.modal-continue-btn:hover::after{
+    animation-name: animacion-continue-btn;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: animacion-continue-btn;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+@keyframes animacion-continue-btn{
+    0%{
+        background-position: 50% center;
+        background-position: calc(50% - 10px) center;
+        background-position: -moz-calc(50% - 10px) center;
+    }
+    50%{
+        background-position: 100% center;
+        background-position: calc(100% + 20px) center;
+        background-position: -moz-calc(100% + 20px) center;
+    }
+    50.1%{
+        background-position: 0px center;
+        background-position: calc(0px - 20px) center;
+        background-position: -moz-calc(0px - 20px) center;
+    }
+    100%{
+        background-position: 50% center;
+        background-position: calc(50% - 10px) center;
+        background-position: -moz-calc(50% - 10px) center;
+    }
+}
+
+#modal-text-msg{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    width: calc(100% - 60px);
+    width: -moz-calc(100% - 60px);
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+#modal-text-msg p{
+    display: block;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    color: #000000;
+    text-align: left;
+    font-weight: 400;
+    line-height: normal;
+}
+#modal-text-msg p > span{
+    font-weight: 500;
+}
+
+#modal-icon-msg{
+    position: relative;
+    display: flex;
+    width: 60px;
+    height: 100%;
+
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-position: center;
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+}
+
+.modal-icon-msg-error{
+    background-image: url(../images/error-msg-icon.svg);
+}
+.modal-icon-msg-success{
+    background-image: url(../images/success-msg-icon.svg);
+}

@@ -1,0 +1,4 @@
+quitar cursor pointer en responsive
+quitar efecto over de comprobar en mobile
+subir pantalla al inicio cuando se esta mostrando la frase correcta, asi haya ganado o perdido
+verificar ismobile

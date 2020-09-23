@@ -1,0 +1,654 @@
+#tra_header{
+	position: absolute;
+	width: 100%;
+	height: 43px;
+    top: 0px;
+    left: 0px;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+	box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.1);
+}
+.tra_header_title{
+	position: relative;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding-left: 30px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	background-image: url(../images/title_icon.svg);
+    background-size: 10px 20px;
+}
+.tra_header_title_txt{
+	display: block;
+	margin: 0px;
+	padding: 0px;
+
+	font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    color: #404e67;
+    font-weight: 500 !important;
+    line-height: normal;
+    text-align: left;
+}
+.tra_header_title_txt span{
+    font-weight: 400 !important;
+}
+
+
+.tra_header_toolbar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+
+    height: 100%;
+}
+
+.tra_header_nav{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+
+    height: 100%;
+}
+
+#tra_record_col,
+#tra_tiempo_col,
+#tra_ayuda_col,
+#tra_reload_col,
+#tra_music_col{
+    position: relative;
+    display: flex;
+    height: 100%;
+    margin: 0px 5px;
+    padding: 0px;
+    box-sizing: border-box;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+#tra_tiempo_col{
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 20px;
+    background-color: #FFFFFF;
+}
+#tra_record_col{
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 10px;
+    background-color: #85C041;
+    border-bottom-width: 0px;
+}
+
+#tra_ayuda_col,
+#tra_reload_col,
+#tra_music_col{
+    align-items: center;
+    padding: 0px 5px;
+    cursor: pointer;
+}
+
+#tra_tiempo_txt{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #404e67;
+    text-align: center;
+    line-height: normal;
+    margin: 0px;
+    padding: 0px;
+}
+#tra_record_txt{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: normal;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 20px;
+    background-position: 5px center;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-image: url(../images/star-record-icon.svg);
+}
+#tra_tiempo_col h6{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    font-weight: 400;/*regular*/
+    color: #404e67;
+    text-align: center;
+    line-height: normal;
+    margin: 0px;
+    padding: 0px;
+}
+#tra_record_col h6{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    font-weight: 400;/*regular*/
+    color: #FFFFFF;
+    text-align: center;
+    line-height: normal;
+    margin: 0px;
+    padding: 0px;
+}
+
+#tra_tiempo_col{border-bottom-color: #404E67;}
+#tra_ayuda_col{border-bottom-color: #85c041;}
+#tra_ayuda_col section{background-color: #85c041;}
+#tra_reload_col{border-bottom-color: #f69e06;}
+#tra_reload_col section{background-color: #f69e06;}
+#tra_music_col{border-bottom-color: #2ba4dd;}
+#tra_music_col section{background-color: #2ba4dd;}
+
+#tra_ayuda_col div,
+#tra_reload_col div,
+#tra_music_col div{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#tra_ayuda_col div{background-image: url(../images/help-icon.svg);}
+#tra_reload_col div{background-image: url(../images/reload-icon.svg);}
+#tra_music_col div{}
+
+.tra_music_off div{
+    background-image: url(../images/music-off-icon.svg);
+}
+.tra_music_on div{
+    background-image: url(../images/music-icon.svg);
+}
+
+
+#tra_ayuda_col section,
+#tra_reload_col section,
+#tra_music_col section{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    height: calc(100% - 2px);
+    height: -moz-calc(100% - 2px);
+    left: 0px;
+    top: -100%;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+
+    transition: top 0.3s;
+    -webkit-transition: top 0.3s;
+}
+
+#tra_ayuda_col p,
+#tra_reload_col p,
+#tra_music_col p{
+    position: absolute;
+    width: 110px;
+    height: 24px;
+    margin: 0px;
+    padding: 0px 0px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    color: #3F4C65;
+    text-align: center;
+    line-height: normal;
+    font-weight: 400;
+    left: 50%;
+    left: calc(50% - 55px);
+    left: -moz-calc(50% - 55px);
+
+    opacity: 0;
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    top: 80%;
+    z-index: 20;
+    box-shadow: 0px 4px 3px -3px rgba(0,0,0,0.5);
+}
+
+#tra_ayuda_col:hover section,
+#tra_reload_col:hover section,
+#tra_music_col:hover section{
+    top: 0px;
+}
+#tra_ayuda_col:hover p,
+#tra_reload_col:hover p,
+#tra_music_col:hover p{
+    top: 100%;
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+
+    transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
+    -webkit-transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
+}
+#tra_ayuda_col:hover div{background-image: url(../images/help-icon-hover.svg);}
+#tra_reload_col:hover div{background-image: url(../images/reload-icon-hover.svg);}
+.tra_music_off:hover div{
+    background-image: url(../images/music-off-icon-hover.svg);
+}
+.tra_music_on:hover div{
+    background-image: url(../images/music-icon-hover.svg);
+}
+
+#tra_estrellas{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: row;
+
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 10px;
+
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-image: url(../images/header_icon.svg);
+    background-size: 10px 30px;
+}
+.tra_estrella{
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    
+    margin: 0px 2px;
+    padding: 0px;
+    width: 25px;
+    height: 25px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.tra_estrella_off{
+    background-image: url(../images/star-off-icon.svg);
+}
+.tra_estrella_on{
+    background-image: url(../images/star-icon.svg);
+    animation-name: animacion-star;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    -webkit-animation-name: animacion-star;
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-iteration-count: 1;
+}
+@keyframes animacion-star {
+    0% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+    }
+    35% {
+        transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+        -o-transform: scale(0.5);
+    }
+    65% {
+        transform: scale(1.3);
+        -webkit-transform: scale(1.3);
+        -o-transform: scale(1.3);
+    }
+    85% {
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        -o-transform: scale(0.8);
+    }
+    95% {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -o-transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+    }
+}
+
+
+@media (min-width: 845px){
+    
+}
+
+@media (min-width: 710px) and (max-width: 844px){
+    #tra_header{
+        width: 100%;
+        height: 30px;
+        box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.1);
+    }
+
+    .tra_header_title{
+        padding-left: 20px;
+        background-position: 5px center;
+        background-size: 10px 20px;
+    }
+    .tra_header_title_txt{
+        font-size: 13px;
+    }
+
+    #tra_record_col,
+    #tra_tiempo_col,
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        margin: 0px 3px;
+        border-bottom-width: 1px;
+    }
+    #tra_tiempo_col{
+        padding: 0px 10px;
+    }
+    #tra_record_col{
+        padding: 0px 5px;
+        border-bottom-width: 0px;
+    }
+
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        padding: 0px 3px;
+    }
+
+    #tra_tiempo_txt{
+        font-size: 12px;
+    }
+    #tra_record_txt{
+        font-size: 12px;
+        padding-left: 15px;
+        background-position: 2px center;
+        background-size: 12px 12px;
+    }
+    #tra_tiempo_col h6{
+        font-size: 12px;
+    }
+    #tra_record_col h6{
+        font-size: 12px;
+    }
+
+    #tra_ayuda_col div,
+    #tra_reload_col div,
+    #tra_music_col div{
+        width: 20px;
+        height: 20px;
+    }
+    
+    #tra_ayuda_col section,
+    #tra_reload_col section,
+    #tra_music_col section{
+        height: 100%;
+        height: calc(100% - 1px);
+        height: -moz-calc(100% - 1px);
+    }
+
+    #tra_ayuda_col p,
+    #tra_reload_col p,
+    #tra_music_col p{
+        width: 110px;
+        height: 24px;
+        
+        font-size: 12px;
+        left: 50%;
+        left: calc(50% - 55px);
+        left: -moz-calc(50% - 55px);
+    }
+
+    #tra_estrellas{
+        padding-left: 10px;
+        padding-right: 10px;
+
+        background-position: 0px center;
+        background-size: 10px 30px;
+    }
+    .tra_estrella{
+        margin: 0px 0px;
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (min-width: 530px) and (max-width: 709px){
+    #tra_header{
+        width: 100%;
+        height: 40px;
+        box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.1);
+    }
+
+    .tra_header_title{
+        width: 140px;
+
+        padding-left: 20px;
+        background-position: 5px center;
+        background-size: 10px 20px;
+    }
+    .tra_header_title_txt{
+        font-size: 13px;
+    }
+
+    #tra_record_col,
+    #tra_tiempo_col,
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        margin: 0px 2px;
+        border-bottom-width: 2px;
+    }
+    #tra_tiempo_col{
+        padding: 0px 5px;
+    }
+    #tra_record_col{
+        padding: 0px 5px;
+        border-bottom-width: 0px;
+    }
+
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        padding: 0px 5px;
+    }
+
+    #tra_tiempo_txt{
+        font-size: 13px;
+    }
+    #tra_record_txt{
+        font-size: 13px;
+        padding-left: 15px;
+        background-position: 13px center;
+        background-size: 12px 12px;
+    }
+    #tra_tiempo_col h6{
+        font-size: 13px;
+    }
+    #tra_record_col h6{
+        font-size: 13px;
+    }
+
+    #tra_ayuda_col div,
+    #tra_reload_col div,
+    #tra_music_col div{
+        width: 20px;
+        height: 20px;
+    }
+    
+    #tra_ayuda_col section,
+    #tra_reload_col section,
+    #tra_music_col section{
+        height: 100%;
+        height: calc(100% - 2px);
+        height: -moz-calc(100% - 2px);
+    }
+
+    #tra_ayuda_col p,
+    #tra_reload_col p,
+    #tra_music_col p{
+        width: 110px;
+        height: 24px;
+        
+        font-size: 12px;
+        left: 50%;
+        left: calc(50% - 55px);
+        left: -moz-calc(50% - 55px);
+    }
+
+    #tra_estrellas{
+        padding-left: 10px;
+        padding-right: 10px;
+
+        background-position: 0px center;
+        background-size: 10px 30px;
+    }
+    .tra_estrella{
+        margin: 0px 0px;
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (min-width: 280px) and (max-width: 529px){
+    #tra_header{
+        width: 100%;
+        height: 45px;
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+        border-bottom: 1px #f69e06 solid;
+    }
+
+    .tra_header_title{
+        display: none;
+    }
+    .tra_header_toolbar{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .tra_header_nav{
+        justify-content: flex-start;
+    }
+
+    #tra_record_col,
+    #tra_tiempo_col,
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        margin: 0px;
+        margin-right: 10px;
+        border-bottom-width: 2px;
+    }
+    #tra_tiempo_col{
+        position: fixed;
+        width: 94px;
+        height: 40px;
+        bottom: 0px;
+        right: 0px;
+        padding: 0px 20px;
+        margin: 0px;
+    }
+    #tra_record_col{
+        position: fixed;
+        height: 40px;
+        bottom: 0px;
+        right: 104px;
+        padding: 0px 7px;
+        margin: 0px;
+        border-bottom-width: 0px;
+    }
+
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        padding: 0px 7px;
+    }
+
+    #tra_tiempo_txt{
+        font-size: 13px;
+    }
+    #tra_record_txt{
+        font-size: 13px;
+        padding-left: 15px;
+        background-position: 13px center;
+        background-size: 12px 12px;
+    }
+    #tra_tiempo_col h6{
+        font-size: 13px;
+    }
+    #tra_record_col h6{
+        font-size: 13px;
+    }
+
+    #tra_ayuda_col div,
+    #tra_reload_col div,
+    #tra_music_col div{
+        width: 24px;
+        height: 24px;
+    }
+    
+    #tra_ayuda_col section,
+    #tra_reload_col section,
+    #tra_music_col section{
+        height: 100%;
+        height: calc(100% - 2px);
+        height: -moz-calc(100% - 2px);
+    }
+
+    #tra_ayuda_col p,
+    #tra_reload_col p,
+    #tra_music_col p{
+        display: none;
+    }
+
+    #tra_estrellas{
+        justify-content: flex-end;
+        padding-left: 20px;
+        padding-right: 10px;
+
+        background-position: 0px center;
+        background-size: 10px 30px;
+    }
+    .tra_estrella{
+        margin: 0px 0px;
+        width: 22px;
+        height: 22px;
+    }
+}
