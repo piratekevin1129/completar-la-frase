@@ -9,6 +9,11 @@
     }
 
     /**********CONTENIDO AQUI************/
+    #comprobar-btn:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #f19e01;
+	}
+
     #palabra-move,
 	.palabra-element,
 	.espacio-element-empty,
@@ -100,8 +105,24 @@
 	}
 	.frase-wrap-win .espacio-element{
 		width: auto !important;
-		
+	}	
 	/************END CONTENT*************/
+
+	.modal-continue-btn:hover{
+	    cursor: pointer;
+	    filter: brightness(105%);
+	    -webkit-filter: brightness(105%);
+	    -o-filter: brightness(105%);
+	}
+	.modal-continue-btn:hover::after{
+	    animation-name: animacion-continue-btn;
+	    animation-duration: 0.5s;
+	    animation-timing-function: linear;
+	    animation-iteration-count: infinite;
+	    -webkit-animation-name: animacion-continue-btn;
+	    -webkit-animation-duration: 0.5s;
+	    -webkit-animation-timing-function: linear;
+	    -webkit-animation-iteration-count: infinite;
 	}
 }
 
@@ -131,13 +152,31 @@
 	
 
 	/**********CONTENIDO AQUI************/
+	#comprobar-btn{
+		width: 150px;
+		height: 30px;
+		font-size: 14px;
+		margin-top: 20px;
+	}
+	#comprobar-btn:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #f19e01;
+	}
+
 	#palabra-move,
 	.palabra-element,
-	.espacio-element
+	.espacio-element-empty,
+	.espacio-element-occuped,
+	.espacio-element-occuped .espacio-palabra::after
 	{
 		width: 120px;
 		height: 25px;
 	}
+	.espacio-element-fixed{
+		width: auto;
+		height: 25px;
+	}
+
 	.espacio-element-active{
 		animation-name: animacion-espacio-active;
 		animation-duration: 1s;
@@ -151,37 +190,11 @@
 		border-radius: 0px 0px 0px 0px;
 	}
 
-	#comprobar-btn{
-		width: 150px;
-		height: 30px;
-		font-size: 14px;
-	}
-
-	#frase-cont{
-		margin: 0px auto;
-		width: 700px;
-		height: auto;
-	}
-	#frase-correcta-txt{
-		width: 100%;
-		height: 20px;
-		font-size: 14px;
-	}
-	
-	.frase-element{
-		width: auto;
-		padding: 0px;
-		margin: 0px;
-		margin-right: 10px;
-	}
-	.frase-element p{
-		font-size: 16px;
-	}
-
 	#palabras-cont{
 		width: 700px;
 		height: auto;
 		margin: 0px auto;
+		margin-top: 20px;
 	}
 	#palabras-wrap{
 		width: 100%;
@@ -200,7 +213,7 @@
 
 	#espacios-cont{
 		margin: 0px auto;
-		width: 700px;
+		width: 600px;
 		height: auto;
 	}
 	#espacios-wrap{
@@ -209,21 +222,28 @@
 		margin: 0px;
 	}
 
-	.espacio-element{
-		margin: 0px 10px;
-		margin-bottom: 10px;
-		border-radius: 4px;
-	}
-
 	.espacio-palabra{
-		padding: 0px 15px;
+		padding: 0px 5px;
 	}
 
-	.espacio-palabra::after{
+	.espacio-element-occuped .espacio-eliminar{
+		top: -25px;
+		right: 5px;
+		opacity: 1;
+		transition: opacity 0.2s, top 0.2s;
+		-webkit-transition: opacity 0.2s, top 0.2s;
+	}
+	.espacio-element-occuped .espacio-palabra{
+		bottom: 0%;
+		opacity: 1;
+		transition: bottom 0.2s, opacity 0.2s, padding 0.2s;
+		-webkit-transition: bottom 0.2s, opacity 0.2s, padding 0.2s;
+	}
+	.espacio-element-occuped .espacio-palabra::after{
 		position: absolute;
 		content: "";
-		width: 100%;
 		height: 100%;
+		left: 0px;
 		top: 0px;
 		background: #FFFFFF;
 		background: linear-gradient(to right, rgba(255,255,255,0), #FFFFFF);
@@ -232,48 +252,66 @@
 		background: -o-linear-gradient(to right, rgba(255,255,255,0), #FFFFFF);
 		opacity: 0;
 
-		transition: opacity 0.2s;
-		-webkit-transition: opacity 0.2s;
+		transition: opacity 0.2s, box-shadow 0.2s;
+		-webkit-transition: opacity 0.2s, box-shadow 0.2s;
 	}
-	.espacio-palabra-fill .espacio-eliminar{
-		right: 5px;
-		opacity: 1;
-		transition: right 0.2s, opacity 0.2s, top 0.2s;
-		-webkit-transition: right 0.2s, opacity 0.2s, top 0.2s;
-	}
-	.espacio-palabra-fill:hover .espacio-palabra::after{
-		opacity: 1 !important;
-	}
-	.espacio-palabra-fill:hover .espacio-eliminar{
+
+	.espacio-element-occuped:hover .espacio-eliminar{
 		top: 50% !important;
 		top: calc(50% - 12.5px) !important;
 		top: -moz-calc(50% - 12.5px) !important;
 		opacity: 1 !important;
 	}
-	.espacio-palabra-fill .espacio-palabra{
-		left: 0%;
-		opacity: 1;
-		transition: left 0.2s, opacity 0.2s;
-		-webkit-transition: left 0.2s, opacity 0.2s;
+	.espacio-element-occuped:hover .espacio-palabra{
+		padding-right: 30px;
 	}
-
-	.frase-element-on{
-		animation-name: animacion-palabra-correcta;
-		-webkit-animation-name: animacion-palabra-correcta;
+	.espacio-element-occuped:hover .espacio-palabra::after{
+		box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.5) inset;
+		opacity: 1 !important;
 	}
+	
 	.frase-wrap-win{
+		background-color: #FFFFFF !important;
 		animation-name: animacion-win;
+		animation-duration: 0.5s;
+		animation-timing-function: linear;
+		animation-iteration-count: 3;
 		-webkit-animation-name: animacion-win;
+		-webkit-animation-duration: 0.5s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-iteration-count: 3;
 	}
-	.frase-wrap-win p{
-		animation-name: animacion-win-color;
-		-webkit-animation-name: animacion-win-color;
+	.frase-wrap-win .espacio-element-fixed,
+	.frase-wrap-win .espacio-element-occuped{
+		background-color: rgba(255,255,255,0) !important;
+	}
+	.frase-wrap-win .espacio-element::after{
+		display: none !important;
+	}
+	.frase-wrap-win .espacio-element{
+		width: auto !important;
 	}
 	/************END CONTENT*************/
 
 	#modal{
 	    height: 396px;
 	    top: 30px;
+	}
+	.modal-continue-btn:hover{
+	    cursor: pointer;
+	    filter: brightness(105%);
+	    -webkit-filter: brightness(105%);
+	    -o-filter: brightness(105%);
+	}
+	.modal-continue-btn:hover::after{
+	    animation-name: animacion-continue-btn;
+	    animation-duration: 0.5s;
+	    animation-timing-function: linear;
+	    animation-iteration-count: infinite;
+	    -webkit-animation-name: animacion-continue-btn;
+	    -webkit-animation-duration: 0.5s;
+	    -webkit-animation-timing-function: linear;
+	    -webkit-animation-iteration-count: infinite;
 	}
 	#instrucciones{
 	    height: 396px;
@@ -314,15 +352,27 @@
 	}
 
 	/**********CONTENIDO AQUI************/
+	#comprobar-btn{
+		width: 150px;
+		height: 30px;
+		font-size: 14px;
+		margin-top: 20px;
+	}
+
 	#palabra-move,
 	.palabra-element,
-	.espacio-element
+	.espacio-element-empty,
+	.espacio-element-occuped,
+	.espacio-element-occuped .espacio-palabra::after
 	{
-		width: 25%;
-		width: calc((100% - (12px * 4)) / 4);
-		width: -moz-calc((100% - (12px * 4)) / 4);
+		width: 120px;
 		height: 30px;
 	}
+	.espacio-element-fixed{
+		width: auto;
+		height: 30px;
+	}
+
 	.espacio-element-active{
 		animation-name: animacion-espacio-active-responsive;
 		animation-duration: 1s;
@@ -336,42 +386,11 @@
 		border-radius: 0px 0px 0px 0px;
 	}
 
-	#comprobar-btn{
-		width: 150px;
-		height: 30px;
-		font-size: 14px;
-	}
-
-	#frase-cont{
-		margin: 0px auto;
-		width: 500px;
-		height: auto;
-	}
-	#frase-correcta-txt{
-		width: 100%;
-		height: 20px;
-		font-size: 14px;
-	}
-	#frase-wrap{
-		transform-origin: 0% center;
-		-webkit-transform-origin: 0% center;
-		-o-transform-origin: 0% center;
-	}
-	
-	.frase-element{
-		width: auto;
-		padding: 0px;
-		margin: 0px;
-		margin-right: 10px;
-	}
-	.frase-element p{
-		font-size: 15px;
-	}
-
 	#palabras-cont{
 		width: 500px;
 		height: auto;
 		margin: 0px auto;
+		margin-top: 20px;
 	}
 	#palabras-wrap{
 		width: 100%;
@@ -381,72 +400,80 @@
 	}
 
 	.palabra-element,#palabra-move{
-		padding: 0px 5px;
+		padding: 0px 10px;
 	}
 	.palabra-element{
-		margin: 0px 6px;
+		margin: 0px 5px;
 		margin-bottom: 10px;
 		cursor: default;
-		transform-origin: center center;
-		-webkit-transform-origin: center center;
-		-o-transform-origin: center center;
 	}
 
 	#espacios-cont{
 		margin: 0px auto;
 		width: 500px;
 		height: auto;
+		margin-top: 20px;
 	}
 	#espacios-wrap{
 		width: 100%;
 		height: auto;
 		margin: 0px;
 	}
-
-	.espacio-element{
-		margin: 0px 6px;
-		margin-bottom: 10px;
-		border-radius: 4px;
-	}
-
-	.espacio-palabra{
-		padding: 0px 5px;
-		padding-right: 20px;
-	}
 	.espacio-palabra p{
 		text-align: left;
 	}
-	.espacio-palabra::after{
-		display: none;
-	}
+	
 	.espacio-eliminar{
 		width: 18px;
 		height: 18px;
-		top: -30px;
+		top: -18px;
 	}
-	.espacio-palabra-fill .espacio-eliminar{
+
+	.espacio-element-occuped .espacio-eliminar{
 		right: 5px;
 		top: 50% !important;
 		top: calc(50% - 9px) !important;
 		top: -moz-calc(50% - 9px) !important;
-		opacity: 1 !important;
-	}
-	.espacio-palabra-fill .espacio-palabra{
-		left: 0%;
 		opacity: 1;
 	}
+	.espacio-element-occuped .espacio-palabra{
+		bottom: 0%;
+		opacity: 1;
+		padding-right: 20px;
+	}
+	.espacio-element-occuped .espacio-palabra::after{
+		display: none;
+	}
 
-	.frase-element-on{
-		animation-name: animacion-palabra-correcta-responsive;
-		-webkit-animation-name: animacion-palabra-correcta-responsive;
-	}
 	.frase-wrap-win{
+		background-color: #FFFFFF !important;
 		animation-name: animacion-win-responsive;
+		animation-duration: 0.5s;
+		animation-timing-function: linear;
+		animation-iteration-count: 3;
 		-webkit-animation-name: animacion-win-responsive;
+		-webkit-animation-duration: 0.5s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-iteration-count: 3;
 	}
-	.frase-wrap-win p{
-		animation-name: animacion-win-color-responsive;
-		-webkit-animation-name: animacion-win-color-responsive;
+	.frase-wrap-win .espacio-element-fixed,
+	.frase-wrap-win .espacio-element-occuped{
+		background-color: rgba(255,255,255,0) !important;
+	}
+	.frase-wrap-win .espacio-element::after{
+		display: none !important;
+	}
+	.frase-wrap-win .espacio-element{
+		width: auto !important;
+	}
+	.frase-wrap-win .espacio-eliminar{
+		visibility: hidden;
+	}
+	.frase-wrap-win .espacio-palabra{
+		padding-right: 5px;
+	}
+	.frase-wrap-win .espacio-palabra p{
+		text-align: center;
 	}
 
 	/************END CONTENT*************/
@@ -459,6 +486,7 @@
 	.modal-continue-btn{
 	    width: 150px;
 	    height: 35px;
+	    cursor: default;
 	    
 	    font-size: 14px;
 	    padding-right: 25px;
@@ -472,12 +500,6 @@
 	    right: 5px;
 	    
 	    background-size: 18px 18px;
-	}
-	.modal-continue-btn:hover::after{
-		animation: none;
-		animation: unset;
-		-webkit-animation: none;
-		-webkit-animation: unset;
 	}
 
 	#instrucciones{
@@ -529,13 +551,23 @@
 	}	
 	
 	/**********CONTENIDO AQUI************/
+	#comprobar-btn{
+		width: 150px;
+		height: 30px;
+		font-size: 14px;
+	}
+
 	#palabra-move,
 	.palabra-element,
-	.espacio-element
+	.espacio-element-empty,
+	.espacio-element-occuped,
+	.espacio-element-occuped .espacio-palabra::after
 	{
-		width: 25%;
-		width: calc((100% - (10px * 4)) / 4);
-		width: -moz-calc((100% - (10px * 4)) / 4);
+		width: 120px;
+		height: 35px;
+	}
+	.espacio-element-fixed{
+		width: auto;
 		height: 35px;
 	}
 	.espacio-element-active{
@@ -549,49 +581,7 @@
 		-webkit-animation-timing-function: linear;
 		z-index: 1;
 		border-radius: 0px 0px 0px 0px;
-	}
-
-	#comprobar-btn{
-		width: 150px;
-		height: 30px;
-		font-size: 14px;
-	}
-
-	#frase-cont{
-		margin: 0px auto;
-		width: 100%;
-		width: calc(100% - 15px);
-		width: -moz-calc(100% - 15px);
-		height: auto;
-	}
-	#frase-correcta-txt{
-		width: 100%;
-		height: 20px;
-		font-size: 13px;
-	}
-	.frase-correcta-txt-hide{
-		transition: opacity none;
-		-webkit-transition: none;
-	}
-	.frase-correcta-txt-show{
-		transition: opacity none;
-		-webkit-transition: none;
-	}
-	#frase-wrap{
-		transform-origin: 0% center;
-		-webkit-transform-origin: 0% center;
-		-o-transform-origin: 0% center;
-	}
-	
-	.frase-element{
-		width: auto;
-		padding: 0px;
-		margin: 0px;
-		margin-right: 10px;
-	}
-	.frase-element p{
-		font-size: 14px;
-	}
+	}	
 
 	#palabras-cont{
 		width: 100%;
@@ -599,6 +589,7 @@
 		width: -moz-calc(100% - 15px);
 		height: auto;
 		margin: 0px auto;
+		margin-top: 20px;
 	}
 	#palabras-wrap{
 		width: 100%;
@@ -608,19 +599,16 @@
 	}
 
 	.palabra-element,#palabra-move{
-		padding: 0px 5px;
+		padding: 0px 10px;
 	}
 	.palabra-element{
 		margin: 0px 5px;
 		margin-bottom: 10px;
 		cursor: default;
-		transform-origin: center center;
-		-webkit-transform-origin: center center;
-		-o-transform-origin: center center;
 	}
 	.palabra_selected{
-		transform: scale(1.2) rotate(0deg);
-		-webkit-transform: scale(1.2) rotate(0deg);
+		transform: scale(1.1) rotate(0deg);
+		-webkit-transform: scale(1.1) rotate(0deg);
 		-o-transform: scale(1.2) rotate(0deg);
 
 		transition: none;
@@ -633,65 +621,68 @@
 		width: calc(100% - 15px);
 		width: -moz-calc(100% - 15px);
 		height: auto;
+		margin-top: 20px;
 	}
 	#espacios-wrap{
 		width: 100%;
 		height: auto;
 		margin: 0px;
 	}
-
-	.espacio-element{
-		margin: 0px 5px;
-		margin-bottom: 10px;
-		border-radius: 4px;
-	}
-
-	.espacio-palabra{
-		padding: 0px 5px;
-		padding-right: 20px;
-	}
 	.espacio-palabra p{
 		text-align: left;
 	}
-	.palabra-element p,#palabra-move p,.espacio-palabra p{
-		font-size: 13px;
-	}
 
-	.espacio-palabra::after{
-		display: none;
-	}
 	.espacio-eliminar{
 		width: 18px;
 		height: 18px;
-		top: -30px;
+		top: -18px;
 	}
-	.espacio-palabra-fill .espacio-eliminar{
+
+	.espacio-element-occuped .espacio-eliminar{
 		right: 5px;
 		top: 50% !important;
 		top: calc(50% - 9px) !important;
 		top: -moz-calc(50% - 9px) !important;
-		opacity: 1 !important;
-	}
-	.espacio-palabra-fill .espacio-palabra{
-		left: 0%;
 		opacity: 1;
 	}
+	.espacio-element-occuped .espacio-palabra{
+		bottom: 0%;
+		opacity: 1;
+		padding-right: 20px;
+	}
+	.espacio-element-occuped .espacio-palabra::after{
+		display: none;
+	}
 
-	.frase-element-on{
-		animation: none;
-		animation: unset;
-		-webkit-animation: none;
-		-webkit-animation: unset;
-	}
 	.frase-wrap-win{
-		animation: none;
-		animation: unset;
-		-webkit-animation: none;
-		-webkit-animation: unset;
+		background-color: #FFFFFF !important;
+		animation-name: animacion-win-responsive;
+		animation-duration: 0.5s;
+		animation-timing-function: linear;
+		animation-iteration-count: 3;
+		-webkit-animation-name: animacion-win-responsive;
+		-webkit-animation-duration: 0.5s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-iteration-count: 3;
 	}
-	.frase-wrap-win p{
-		animation-name: animacion-win-color-responsive;
-		-webkit-animation-name: animacion-win-color-responsive;
+	.frase-wrap-win .espacio-element-fixed,
+	.frase-wrap-win .espacio-element-occuped{
+		background-color: rgba(255,255,255,0) !important;
+	}
+	.frase-wrap-win .espacio-element::after{
+		display: none !important;
+	}
+	.frase-wrap-win .espacio-element{
+		width: auto !important;
+	}
+	.frase-wrap-win .espacio-eliminar{
+		visibility: hidden;
+	}
+	.frase-wrap-win .espacio-palabra{
+		padding-right: 5px;
+	}
+	.frase-wrap-win .espacio-palabra p{
+		text-align: center;
 	}
 
 	/************END CONTENT*************/
@@ -706,6 +697,7 @@
 	.modal-continue-btn{
 	    width: 150px;
 	    height: 35px;
+	    cursor: default;
 	    
 	    font-size: 14px;
 	    padding-right: 25px;
@@ -720,12 +712,7 @@
 	    
 	    background-size: 18px 18px;
 	}
-	.modal-continue-btn:hover::after{
-		animation: none;
-		animation: unset;
-		-webkit-animation: none;
-		-webkit-animation: unset;
-	}
+	
 	#modal-msg{
 	    width: 300px;
 	    height: 165px;

@@ -1,4 +1,4 @@
-var instrucciones_inst_txt = 'Arrastra cada palabra al espacio que consideres adecuado para descubrir la frase oculta'
+var instrucciones_inst_txt = 'Arrastra cada palabra al espacio que falta en la frase para completarla'
 var instrucciones_gif_txt = '<div class="demo-row2"><div class="demo-col-4"></div><div class="demo-col-5"></div><div class="demo-col-6"></div></div><div class="demo-row1"><div class="demo-col-1">xxx</div><div class="demo-col-2">xxx</div><div class="demo-col-3">xxx</div></div><div class="demo-cursor"></div>'
 
 var ismobile = false
@@ -38,7 +38,7 @@ function prepareWindow(){
     }
 
     if(ismobile){
-    	instrucciones_inst_txt = 'Toca una palabra y luego toca el espacio que consideres correcto para descubrir la frase oculta'
+    	instrucciones_inst_txt = 'Toca una palabra y luego toca el espacio que consideres correcto para completar la frase'
     	instrucciones_gif_txt = '<div class="demo-row2"><div class="mobi-col-4"></div><div class="mobi-col-5"></div><div class="mobi-col-6"></div></div><div class="demo-row1"><div class="mobi-col-1">xxx</div><div class="mobi-col-2">xxx</div><div class="mobi-col-3">xxx</div></div><div class="demo-finger"></div>'
     }
 

@@ -118,18 +118,14 @@
     padding-right: 25px;
     font-weight: normal;
     line-height: normal;
+    cursor: pointer;
 
     box-shadow: -1px 1px 2px 0px rgba(0,0,0,0.8);
 
     transition: filter 0.2s, -webkit-filter 0.2s, -o-filter 0.2s;
     -webkit-transition: filter 0.2s, -webkit-filter 0.2s, -o-filter 0.2s;
 }
-.modal-continue-btn:hover{
-    cursor: pointer;
-    filter: brightness(105%);
-    -webkit-filter: brightness(105%);
-    -o-filter: brightness(105%);
-}
+
 .modal-continue-btn::after{
     position: absolute;
     content: "";
@@ -151,16 +147,7 @@
     transition: border 0.2s;
     -webkit-transition: border 0.2s;
 }
-.modal-continue-btn:hover::after{
-    animation-name: animacion-continue-btn;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    -webkit-animation-name: animacion-continue-btn;
-    -webkit-animation-duration: 0.5s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-}
+
 @keyframes animacion-continue-btn{
     0%{
         background-position: 50% center;
