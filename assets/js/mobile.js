@@ -1,5 +1,5 @@
 var instrucciones_inst_txt = 'Arrastra cada palabra al espacio que falta en la frase para completarla'
-var instrucciones_gif_txt = '<div class="demo-row2"><div class="demo-col-4"></div><div class="demo-col-5"></div><div class="demo-col-6"></div></div><div class="demo-row1"><div class="demo-col-1">xxx</div><div class="demo-col-2">xxx</div><div class="demo-col-3">xxx</div></div><div class="demo-cursor"></div>'
+var instrucciones_gif_txt = '<div class="demo-row2"><div class="demo-col-4"></div><div class="demo-col-44">xxx</div><div class="demo-col-5"></div><div class="demo-col-55">xxx</div><div class="demo-col-6"></div></div> <div class="demo-row1"><div class="demo-col-1">xxx</div><div class="demo-col-2">xxx</div><div class="demo-col-3">xxx</div></div> <div class="demo-cursor"></div>'
 
 var ismobile = false
 var isresponsive = false
@@ -23,7 +23,7 @@ function prepareWindow(){
         actual_dimension = 3
         game_width = 530
         game_height = 600
-        ismobile = true
+        //ismobile = true
         isresponsive = true
        
         window.top.postMessage({'completado': false, 'alto': game_height}, '*' );
@@ -31,7 +31,7 @@ function prepareWindow(){
         actual_dimension = 4
         game_width = window.innerWidth
         game_height = 700
-        ismobile = true
+        //ismobile = true
         isresponsive = true
 
         window.top.postMessage({'completado': false, 'alto': game_height}, '*' );
@@ -39,7 +39,7 @@ function prepareWindow(){
 
     if(ismobile){
     	instrucciones_inst_txt = 'Toca una palabra y luego toca el espacio que consideres correcto para completar la frase'
-    	instrucciones_gif_txt = '<div class="demo-row2"><div class="mobi-col-4"></div><div class="mobi-col-5"></div><div class="mobi-col-6"></div></div><div class="demo-row1"><div class="mobi-col-1">xxx</div><div class="mobi-col-2">xxx</div><div class="mobi-col-3">xxx</div></div><div class="demo-finger"></div>'
+    	instrucciones_gif_txt = '<div class="demo-row2"><div class="mobi-col-4"></div><div class="mobi-col-44">xxx</div><div class="mobi-col-5"></div><div class="mobi-col-55">xxx</div><div class="mobi-col-6"></div></div><div class="demo-row1"><div class="mobi-col-1">xxx</div><div class="mobi-col-2">xxx</div><div class="mobi-col-3">xxx</div></div><div class="demo-finger"></div>'
     }
 
     getE('instrucciones_inst').innerHTML = instrucciones_inst_txt
