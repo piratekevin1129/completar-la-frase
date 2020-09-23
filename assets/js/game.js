@@ -357,6 +357,9 @@ function comprobarJuego(){
 
 				animacion_palabra_correcta = setInterval(function(){
 					if(j==palabras_correctas.length){
+						clearInterval(animacion_palabra_correcta)
+						animacion_palabra_correcta = null
+						
 						setModal({msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:false})
 					}else{
 						var espacio_e = palabras_correctas[j].ee
