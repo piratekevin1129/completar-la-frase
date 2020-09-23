@@ -321,6 +321,7 @@ function comprobarJuego(){
 
 	if(esta){
 		//alert("bien, ganaste")
+		$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
 		pararReloj()
 		getE('espacios-cont').classList.add('frase-wrap-win')
 		setModal({
@@ -341,6 +342,7 @@ function comprobarJuego(){
 		incorrect_mp3.play()
 		
 		intentos++
+		$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
 		if(intentos==3){
 			//alert("perdiste")
 			//mostrar la correcta
