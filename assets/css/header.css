@@ -247,31 +247,6 @@
     box-shadow: 0px 4px 3px -3px rgba(0,0,0,0.5);
 }
 
-#tra_ayuda_col:hover section,
-#tra_reload_col:hover section,
-#tra_music_col:hover section{
-    top: 0px;
-}
-#tra_ayuda_col:hover p,
-#tra_reload_col:hover p,
-#tra_music_col:hover p{
-    top: 100%;
-    opacity: 1;
-    transform: scale(1);
-    -webkit-transform: scale(1);
-    -o-transform: scale(1);
-
-    transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
-    -webkit-transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
-}
-#tra_ayuda_col:hover div{background-image: url(../images/help-icon-hover.svg);}
-#tra_reload_col:hover div{background-image: url(../images/reload-icon-hover.svg);}
-.tra_music_off:hover div{
-    background-image: url(../images/music-off-icon-hover.svg);
-}
-.tra_music_on:hover div{
-    background-image: url(../images/music-icon-hover.svg);
-}
 
 #tra_estrellas{
     position: relative;
@@ -353,7 +328,31 @@
 
 
 @media (min-width: 845px){
-    
+    #tra_ayuda_col:hover section,
+    #tra_reload_col:hover section,
+    #tra_music_col:hover section{
+        top: 0px;
+    }
+    #tra_ayuda_col:hover p,
+    #tra_reload_col:hover p,
+    #tra_music_col:hover p{
+        top: 100%;
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+
+        transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
+        -webkit-transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
+    }
+    #tra_ayuda_col:hover div{background-image: url(../images/help-icon-hover.svg);}
+    #tra_reload_col:hover div{background-image: url(../images/reload-icon-hover.svg);}
+    .tra_music_off:hover div{
+        background-image: url(../images/music-off-icon-hover.svg);
+    }
+    .tra_music_on:hover div{
+        background-image: url(../images/music-icon-hover.svg);
+    }
 }
 
 @media (min-width: 710px) and (max-width: 844px){
@@ -448,6 +447,32 @@
         margin: 0px 0px;
         width: 22px;
         height: 22px;
+    }
+
+    #tra_ayuda_col:hover section,
+    #tra_reload_col:hover section,
+    #tra_music_col:hover section{
+        top: 0px;
+    }
+    #tra_ayuda_col:hover p,
+    #tra_reload_col:hover p,
+    #tra_music_col:hover p{
+        top: 100%;
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+
+        transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
+        -webkit-transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
+    }
+    #tra_ayuda_col:hover div{background-image: url(../images/help-icon-hover.svg);}
+    #tra_reload_col:hover div{background-image: url(../images/reload-icon-hover.svg);}
+    .tra_music_off:hover div{
+        background-image: url(../images/music-off-icon-hover.svg);
+    }
+    .tra_music_on:hover div{
+        background-image: url(../images/music-icon-hover.svg);
     }
 }
 
@@ -546,6 +571,32 @@
         width: 22px;
         height: 22px;
     }
+
+    #tra_ayuda_col:hover section,
+    #tra_reload_col:hover section,
+    #tra_music_col:hover section{
+        top: 0px;
+    }
+    #tra_ayuda_col:hover p,
+    #tra_reload_col:hover p,
+    #tra_music_col:hover p{
+        top: 100%;
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+
+        transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
+        -webkit-transition: top 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s;
+    }
+    #tra_ayuda_col:hover div{background-image: url(../images/help-icon-hover.svg);}
+    #tra_reload_col:hover div{background-image: url(../images/reload-icon-hover.svg);}
+    .tra_music_off:hover div{
+        background-image: url(../images/music-off-icon-hover.svg);
+    }
+    .tra_music_on:hover div{
+        background-image: url(../images/music-icon-hover.svg);
+    }
 }
 
 @media (min-width: 280px) and (max-width: 529px){
@@ -598,6 +649,7 @@
     #tra_reload_col,
     #tra_music_col{
         padding: 0px 7px;
+        cursor: default;
     }
 
     #tra_tiempo_txt{
@@ -650,4 +702,5 @@
         width: 22px;
         height: 22px;
     }
+
 }

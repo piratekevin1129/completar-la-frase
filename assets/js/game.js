@@ -48,7 +48,9 @@ function setGame(){
 		var h = ''
 		if(frase_cortada[i].indexOf('__')!=-1){
 			//es un espacio
-			ee.setAttribute('onclick','clickEspacio('+i+')')
+			if(ismobile){
+				ee.setAttribute('onclick','clickEspacio('+i+')')
+			}
 			ee.className = 'espacio-element espacio-element-empty'
 			h+='<div class="espacio-palabra"><p>...</p></div><button class="espacio-eliminar" onclick="quitarPalabra(this)"></button>'
 			ee.setAttribute('key','')

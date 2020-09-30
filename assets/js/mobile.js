@@ -8,6 +8,7 @@ var tra_contenedor = document.getElementById('tra_contenedor')
 
 function prepareWindow(){
     ismobile = isMobileDevice()
+    //ismobile = true
     
     if(window.innerWidth>=845){
         actual_dimension = 1
