@@ -125,7 +125,7 @@
     color: #FFFFFF;
     text-align: center;
     line-height: normal;
-    font-weight: 700px;
+    font-weight: 700;
     text-shadow: 0px 0px 3px #BA8102;
     cursor: pointer;
 }
@@ -149,7 +149,6 @@
     -o-transform: scale(1.05);
 }
 
-
 #instrucciones-gif{
     position: relative;
     width: 350px;
@@ -161,7 +160,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: #f4f4f4;
+    background-color: rgba(0,0,0,0);
 }
 .demo-row1{
     position: relative;
@@ -181,25 +180,35 @@
     margin: 0px auto;
 
     box-sizing: border-box;
-    
 }
 
 .demo-col-1,.demo-col-2,.demo-col-3,
 .mobi-col-1,.mobi-col-2,.mobi-col-3{
+
     position: absolute;
     width: 25%;
-    height: 20px;
+    height: 25px;
     
     font-family: 'Quicksand', sans-serif;
     font-size: 13px;
+    padding: 0px;
+    margin: 0px;
+    color: #FFFFFF;
+    box-sizing: border-box;
+    padding-bottom: 5px;
     
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(-10px);
-    -webkit-transform: translateY(-10px);
-    -o-transform: translateY(-10px);
+    transform: translateY(-12.5px);
+    -webkit-transform: translateY(-12.5px);
+    -o-transform: translateY(-12.5px);
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url(../images/palabra-background.svg);
 
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -282,8 +291,12 @@
     -o-transform: translateY(-10px);
     background-color: rgba(0,0,0,0);
     box-sizing: border-box;
-    border-bottom: #000 solid 1px;
-    background-color: #FFFFFF;
+    
+    background-color: rgba(0,0,0,0);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url(../images/espacio-background.svg);
 
     font-family: 'Quicksand', sans-serif;
     font-size: 13px;
@@ -295,6 +308,10 @@
     
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
+}
+.demo-col-44,.demo-col-55,
+.mobi-col-44,.mobi-col-55{
+    background-image: none;
 }
 
 .demo-col-4,.demo-col-5,.demo-col-6{
@@ -428,38 +445,38 @@
     0% {
         left: 2.5%;
         top: 50%;
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     12% {
         left: 2.5%;
         top: 50%;
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     24% {
         left: 100%;
         left: calc(100% - (25% + 2.5%));
         left: -moz-calc(100% - (25% + 2.5%));
         top: -100%;
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     25%{
         left: 100%;
         left: calc(100% - (25% + 2.5%));
         left: -moz-calc(100% - (25% + 2.5%));
         top: -100%;
-        background-color: #FFFFFF;
-        color: #2ba4dd;
+        /*background-color: #FFFFFF;
+        color: #2ba4dd;*/
     }
     100%{
         left: 100%;
         left: calc(100% - (25% + 2.5%));
         left: -moz-calc(100% - (25% + 2.5%));
         top: -100%;
-        background-color: #FFFFFF;
-        color: #2ba4dd;
+        /*background-color: #FFFFFF;
+        color: #2ba4dd;*/
     }
 }
 @keyframes animation-cuadro2{
@@ -468,34 +485,34 @@
         left: 50%;
         left: calc(50% - 12.5%);
         left: -moz-calc(50% - 12.5%);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     36% {
         top: 50%;
         left: 50%;
         left: calc(50% - 12.5%);
         left: -moz-calc(50% - 12.5%);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     48% {
         top: -100%;
         left: 2.5%;
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     49%{
         top: -100%;
         left: 2.5%;
-        background-color: #FFFFFF;
-        color: #2ba4dd;
+        /*background-color: #FFFFFF;
+        color: #2ba4dd;*/
     }
     100%{
         top: -100%;
         left: 2.5%;
-        background-color: #FFFFFF;
-        color: #2ba4dd;
+        /*background-color: #FFFFFF;
+        color: #2ba4dd;*/
     }
 }
 @keyframes animation-cuadro3{
@@ -504,84 +521,112 @@
         left: 100%;
         left: calc(100% - (25% + 2.5%));
         left: -moz-calc(100% - (25% + 2.5%));
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     60% {
         top: 50%;
         left: 100%;
         left: calc(100% - (25% + 2.5%));
         left: -moz-calc(100% - (25% + 2.5%));
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     72% {
         left: 50%;
         left: calc(50% - 12.5%);
         left: -moz-calc(50% - 12.5%);
         top: -100%;
-        background-color: #2ba4dd;
-        color: #FFFFFF;
+        /*background-color: #2ba4dd;
+        color: #FFFFFF;*/
     }
     73% {
         left: 50%;
         left: calc(50% - 12.5%);
         left: -moz-calc(50% - 12.5%);
         top: -100%;
-        background-color: #FFFFFF;
-        color: #2ba4dd;
+        /*background-color: #FFFFFF;
+        color: #2ba4dd;*/
     }
     100%{
         left: 50%;
         left: calc(50% - 12.5%);
         left: -moz-calc(50% - 12.5%);
         top: -100%;
-        background-color: #FFFFFF;
-        color: #2ba4dd;
+        /*background-color: #FFFFFF;
+        color: #2ba4dd;*/
     }
 }
 @keyframes animation-demo-espacio{
     0% {
-        box-shadow: none;
+        filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
     }
     12% {
-        box-shadow: none;
+        filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
     }
     13%{
-        box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
+        filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -o-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
     }
     24% {
-        box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
+        filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -o-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
     }
     25%{
-        box-shadow: none;
+        filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
     }
     36% {
-        box-shadow: none;
+        filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
     }
     37% {
-        box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
+        filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -o-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
     }
     48% {
-        box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
+        filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -o-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
     }
     49% {
-        box-shadow: none;
+        filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
     }
     60% {
-        box-shadow: none;
+        filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
     }
     61% {
-        box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
+        filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -o-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
     }
     72% {
-        box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
+        filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
+        -o-filter: drop-shadow(0px,0px,3px, rgba(0,0,0,0.5));
     }
     73% {
-        box-shadow: none;
+        filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
     }
     100%{
-        box-shadow: none;
+        filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
     }
 }
 

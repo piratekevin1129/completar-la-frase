@@ -1,3 +1,6 @@
+body,html{
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+}
 #tra_contenedor{
 	position: relative;
 	width: 845px;
@@ -21,7 +24,7 @@
     width: 100%;
     top: 43px;
     padding-top: 20px;
-    background-color: #f4f4f4;
+    background-color: #FFFFFF;
 
     /*display: flex;
     flex-direction: column;
@@ -30,33 +33,35 @@
 
 #comprobar-btn{
 	display: flex;
-	width: 150px;
-	height: 40px;
-	border-radius: 4px;
-	background: #feb30c;
-	background: linear-gradient(to bottom, #feb30c, #f09c00);
-	background: -webkit-linear-gradient(to bottom, #feb30c, #f09c00);
-	background: -o-linear-gradient(to bottom, #feb30c, #f09c00);
-	background: -moz-linear-gradient(to bottom, #feb30c, #f09c00);
+	width: 134px;
+	height: 45px;
+	
+	background-color: rgba(0,0,0,0);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url(../images/comprobar-background.svg);
 	border: none;
 	margin: 0px auto;
 	padding: 0px;
 	margin-top: 20px;
+	padding-bottom: 10px;
 
 	font-family: 'Quicksand', sans-serif;
-	font-size: 15px;
-	color: #000000;
+	font-size: 18px;
+	color: #FFFFFF;
 	text-align: center;
 	line-height: normal;
-	font-weight: 500;
+	font-weight: 700;
 	cursor: pointer;
 	justify-content: center;
 	align-items: center;
 
-	transition: box-shadow 0.1s;
-	-webkit-transition: box-shadow 0.1s;
-}
+	text-shadow: 0px 0px 4px #BA8102;
 
+	transition: transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s;
+	-webkit-transition: box-shadow 0.1s, -webkit-transform 0.1s, -o-transform 0.1s;
+}
 
 #palabras-cont{
 	position: relative;
@@ -157,14 +162,17 @@
 }
 /*estilo para el mousedown*/
 .palabra_clicked{
-	visibility: hidden;
-	opacity: 0;
-	transform: scale(0);
-	-webkit-transform: scale(0);
-	-o-transform: scale(0);
-
+	cursor: default !important;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/palabra-clicked-background.svg);
+	
 	transition: visibility 0.2s, opacity 0.2s, transform 0.2s, -webkit-transform 0.2s, -o-transform 0.2s, box-shadow 0.2s, border 0.2s;
 	-webkit-transition: visibility 0.2s, opacity 0.2s, transform 0.2s, -webkit-transform 0.2s, -o-transform 0.2s, box-shadow 0.2s, border 0.2s;
+}
+.palabra_clicked p{
+	visibility: hidden;
 }
 /*estilo para el tap o click*/
 .palabra_selected{
@@ -338,20 +346,27 @@
 	background-image: url(../images/espacio-background.svg);
 	background-color: rgba(255,255,255,0);
 }
+.espacio-element-occuped{
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/espacio-background.svg);
+}
 .espacio-element-occuped .espacio-palabra p{
-	color: #2ba4dd;
+	color: #FFFFFF;
+	text-shadow: 0px 0px 4px rgba(0,0,0,1);
 }
 
 .espacio-eliminar{
 	display: block;
 	position: absolute;
-	width: 25px;
-	height: 25px;
+	width: 20px;
+	height: 20px;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
 	background-color: rgba(0,0,0,0);
-	background-image: url(../images/remove-icon-2.svg);
+	background-image: url(../images/remove-icon-3.svg);
 	opacity: 0;
 	padding: 0px;
 	border: none;

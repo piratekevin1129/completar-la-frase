@@ -143,73 +143,80 @@ function clickPalabra(idname){
 	}
 }
 function clickEspacio(idname){
-	//comprobar que no este ocupado ya
-	var toca_espacio = -1
-	var clase_actual = espacios_coll[idname].className
-	if(clase_actual.indexOf('empty')!=-1){
-		toca_espacio = idname
-	}
-
-	if(toca_espacio!=-1){
-		if(palabra_clicked==null||palabra_clicked==undefined){
-			setModal({
-				msg:'Selecciona una palabra para ubicar en este espacio',
-				close:true,
-				autoclose:4000
-			})
-		}else{
-			//quitar alumbraciones
-			for(i = 0;i<espacios_coll.length;i++){
-				espacios_coll[i].classList.remove('espacio-element-active')
-			}
-
-			espacios_coll[toca_espacio].classList.remove('espacio-element-empty')
-			espacios_coll[toca_espacio].classList.add('espacio-element-occuped')
-			espacios_coll[toca_espacio].setAttribute('key',palabra_clicked.getAttribute('key'))
-			espacios_coll[toca_espacio].setAttribute('value',palabra_clicked.getAttribute('ind'))
-			//quitar onclick
-			espacios_coll[toca_espacio].removeAttribute('onclick')
-
-			var texto = espacios_coll[toca_espacio].getElementsByClassName('espacio-palabra')[0]
-			texto.innerHTML = palabra_clicked.innerHTML
-
-			palabra_clicked.classList.remove('palabra_selected')
-			palabra_clicked.classList.add('palabra_clicked')
-			palabra_clicked = null
-			palabra_clicked_rect = null
+	//mirar que no este clickeado ya
+	var clase_clicked = palabra_clicked.className
+	if(clase_clicked.indexOf('palabra_clicked')==-1){
+		//comprobar que no este ocupado ya
+		var toca_espacio = -1
+		var clase_actual = espacios_coll[idname].className
+		if(clase_actual.indexOf('empty')!=-1){
+			toca_espacio = idname
 		}
-	}else{
-		//ocupado
-		console.log("ocupado")
+
+		if(toca_espacio!=-1){
+			if(palabra_clicked==null||palabra_clicked==undefined){
+				setModal({
+					msg:'Selecciona una palabra para ubicar en este espacio',
+					close:true,
+					autoclose:4000
+				})
+			}else{
+				//quitar alumbraciones
+				for(i = 0;i<espacios_coll.length;i++){
+					espacios_coll[i].classList.remove('espacio-element-active')
+				}
+
+				espacios_coll[toca_espacio].classList.remove('espacio-element-empty')
+				espacios_coll[toca_espacio].classList.add('espacio-element-occuped')
+				espacios_coll[toca_espacio].setAttribute('key',palabra_clicked.getAttribute('key'))
+				espacios_coll[toca_espacio].setAttribute('value',palabra_clicked.getAttribute('ind'))
+				//quitar onclick
+				espacios_coll[toca_espacio].removeAttribute('onclick')
+
+				var texto = espacios_coll[toca_espacio].getElementsByClassName('espacio-palabra')[0]
+				texto.innerHTML = palabra_clicked.innerHTML
+
+				palabra_clicked.classList.remove('palabra_selected')
+				palabra_clicked.classList.add('palabra_clicked')
+				palabra_clicked = null
+				palabra_clicked_rect = null
+			}
+		}else{
+			//ocupado
+			console.log("ocupado")
+		}
 	}
 }
 
 function downPalabra(palabra_div,e){
-	drag_mp3.currentTime = 0
-	drag_mp3.play()
-	window.addEventListener('mousemove',movePalabra,false)
-	window.addEventListener('mouseup',upPalabra,false)
+	var clase_clicked = palabra_div.className
+	if(clase_clicked.indexOf('palabra_clicked')==-1){
+		drag_mp3.currentTime = 0
+		drag_mp3.play()
+		window.addEventListener('mousemove',movePalabra,false)
+		window.addEventListener('mouseup',upPalabra,false)
 
-	palabra_clicked = palabra_div
-	palabra_clicked_rect = {
-		width:palabra_div.offsetWidth,
-		height:palabra_div.offsetHeight
-	}
-	palabra_move.innerHTML = palabra_clicked.innerHTML
-	palabra_clicked.classList.remove('palabra_sola')
-	palabra_clicked.classList.add('palabra_clicked')	
+		palabra_clicked = palabra_div
+		palabra_clicked_rect = {
+			width:palabra_div.offsetWidth,
+			height:palabra_div.offsetHeight
+		}
+		palabra_move.innerHTML = palabra_clicked.innerHTML
+		palabra_clicked.classList.remove('palabra_sola')
+		palabra_clicked.classList.add('palabra_clicked')	
 
-	posx_e = e.pageX
-	posy_e = e.pageY
-	palabra_move.style.left = (posx_e-(palabra_clicked_rect.width/2))+'px'
-	palabra_move.style.top = (posy_e-(palabra_clicked_rect.height/2))+'px'
-	palabra_move.className = 'palabra-move-on'
+		posx_e = e.pageX
+		posy_e = e.pageY
+		palabra_move.style.left = (posx_e-(palabra_clicked_rect.width/2))+'px'
+		palabra_move.style.top = (posy_e-(palabra_clicked_rect.height/2))+'px'
+		palabra_move.className = 'palabra-move-on'
 
-	//poner espacios alumbrando, menos los ocupados
-	for(i = 0;i<espacios_coll.length;i++){
-		var clase_actual = espacios_coll[i].className
-		if(clase_actual.indexOf('empty')!=-1){
-			espacios_coll[i].classList.add('espacio-element-active')
+		//poner espacios alumbrando, menos los ocupados
+		for(i = 0;i<espacios_coll.length;i++){
+			var clase_actual = espacios_coll[i].className
+			if(clase_actual.indexOf('empty')!=-1){
+				espacios_coll[i].classList.add('espacio-element-active')
+			}
 		}
 	}
 }
@@ -327,7 +334,8 @@ function comprobarJuego(){
 		pararReloj()
 		getE('espacios-cont').classList.add('frase-wrap-win')
 		setModal({
-			msg:'<span>'+titulo_final+',</span> '+mensaje_final+'.<br />',
+			title:titulo_final,
+			msg:mensaje_final,
 			icon:'success',
 			close:false,
 			continue:true,
@@ -362,7 +370,14 @@ function comprobarJuego(){
 						clearInterval(animacion_palabra_correcta)
 						animacion_palabra_correcta = null
 						
-						setModal({msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:false})
+						setModal({
+							title:titulo_final_mal,
+							msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',
+							close:false,
+							continue:true,
+							action:'reloadGame',
+							label:'Aceptar'
+						})
 					}else{
 						var espacio_e = palabras_correctas[j].ee
 						var palabra_d = palabras_correctas[j].pe
@@ -465,27 +480,48 @@ function setModal(params){
 		close = params.close
 	}
 
-	if(icon=='success'){
+	if(params.title!=null&&params.title!=undefined){
+		document.getElementById('modal-title').innerHTML = params.title
+	}else{
+		document.getElementById('modal-title').innerHTML = 'Alerta'
+	}
+
+	/*if(icon=='success'){
 		document.getElementById('modal-icon-msg').className = 'modal-icon-msg-success'
 	}else{
 		document.getElementById('modal-icon-msg').className = 'modal-icon-msg-error'
-	}
+	}*/
+
 	if(close){
 		document.getElementById('modal-close-msg').style.visibility = 'visible'
 	}else{
 		document.getElementById('modal-close-msg').style.visibility = 'hidden'
 	}
 
-	var continue_btn = ''
+	
 	var msg_full = '<p>'+msg+'</p>'
 	if(params.continue!=null&&params.continue!=undefined){
-		continue_btn+='<button class="modal-continue-btn" onmouseover="overContinue()" onclick="'+params.action+'()">'+params.label+'</button>'
-		msg_full+=continue_btn
+		document.getElementById('modal-continue-btn').style.display = 'block'
+		
+	}else{
+		document.getElementById('modal-continue-btn').style.display = 'none'
 	}
+
+	if(params.action!=null&&params.action!=undefined){
+		document.getElementById('modal-continue-btn').setAttribute('onclick',params.action+'()')
+	}else{
+		document.getElementById('modal-continue-btn').setAttribute('onclick','unsetModal()')
+	}
+
+	if(params.label!=null&&params.action!=undefined){
+		document.getElementById('modal-continue-btn').innerHTML = params.label
+	}else{
+		document.getElementById('modal-continue-btn').innerHTML = 'Continuar'
+	}
+
 
 	document.getElementById('modal-text-msg').innerHTML = msg_full
 
-	
 	victoria_mp3.play()
 
 	if(params.delay!=null&&params.delay!=undefined){
