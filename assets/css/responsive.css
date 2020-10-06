@@ -311,8 +311,7 @@
 	    max-height: 260px;
 	}
 	#instrucciones_title{
-	    font-size: 16px;
-	    top: -20px;
+	    
 	}
 	#instrucciones-btn{
 		bottom: -20px;
@@ -346,10 +345,7 @@
 
 	/**********CONTENIDO AQUI************/
 	#comprobar-btn{
-		width: 150px;
-		height: 30px;
-		font-size: 14px;
-		margin-top: 20px;
+		margin-top: 15px;
 	}
 
 	#palabra-move,
@@ -358,7 +354,7 @@
 	.espacio-element-occuped,
 	.espacio-element-occuped .espacio-palabra::after
 	{
-		width: 120px;
+		width: 100px;
 		height: 30px;
 	}
 	.espacio-element-fixed{
@@ -393,7 +389,8 @@
 	}
 
 	.palabra-element,#palabra-move{
-		padding: 0px 10px;
+		padding: 0px 5px;
+		padding-bottom: 5px;
 	}
 	.palabra-element{
 		margin: 0px 5px;
@@ -403,14 +400,15 @@
 
 	#espacios-cont{
 		margin: 0px auto;
-		width: 500px;
-		height: auto;
-		margin-top: 20px;
+		width: 520px;
+		height: 152px;
+		margin-top: 30px;
 	}
 	#espacios-wrap{
 		width: 100%;
 		height: auto;
 		margin: 0px;
+
 	}
 	.espacio-palabra p{
 		text-align: left;
@@ -452,6 +450,11 @@
 	.frase-wrap-win .espacio-element-fixed,
 	.frase-wrap-win .espacio-element-occuped{
 		background-color: rgba(255,255,255,0) !important;
+		background-image: none;
+	}
+	.frase-wrap-win .espacio-element-occuped p{
+		color: #000000;
+		text-shadow: none;
 	}
 	.frase-wrap-win .espacio-element::after{
 		display: none !important;
@@ -480,15 +483,11 @@
 	#instrucciones-box{
 		margin: 0px auto;
 	}
-	#instrucciones-box-wrap > p{
-		margin: 15px 0px;
-	}
 	#instrucciones-box-wrap{
-	    max-height: 510px;
+	    max-height: 260px;
 	}
 	#instrucciones_title{
-	    font-size: 16px;
-	    margin-bottom: 10px;
+	    
 	}
 	#instrucciones-close-btn{
 		cursor: default;
@@ -499,12 +498,7 @@
 	    top: 40px;
 	    z-index: 2;
 	}
-	#modal-continue-btn{
-	    width: 150px;
-	    height: 35px;
-	    
-	    font-size: 14px;
-	}
+
 }
 
 @media (min-width: 280px) and (max-width: 529px){

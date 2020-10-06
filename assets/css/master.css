@@ -422,19 +422,25 @@ body,html{
 
 @keyframes animacion-win{
 	0%{
-		box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+		filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
 		transform: scale(1);
 		-webkit-transform: scale(1);
 		-o-transform: scale(1);
 	}
 	50%{
-		box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.2);
+		filter: drop-shadow(0px,0px,5px, rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(0px,0px,5px, rgba(0,0,0,0.5));
+        -o-filter: drop-shadow(0px,0px,5px, rgba(0,0,0,0.5));
 		transform: scale(1.1);
 		-webkit-transform: scale(1.1);
 		-o-transform: scale(1.1);
 	}
 	100%{
-		box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+		filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
 		transform: scale(1);
 		-webkit-transform: scale(1);
 		-o-transform: scale(1);
@@ -442,12 +448,18 @@ body,html{
 }
 @keyframes animacion-win-responsive{
 	0%{
-		box-shadow: 0px 0px 0px 0px #7cb139;
+		filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
 	}
 	50%{
-		box-shadow: 0px 0px 5px 1px #7cb139;
+		filter: drop-shadow(0px,0px,5px, rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(0px,0px,5px, rgba(0,0,0,0.5));
+        -o-filter: drop-shadow(0px,0px,5px, rgba(0,0,0,0.5));
 	}
 	100%{
-		box-shadow: 0px 0px 0px 0px #7cb139;
+		filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -webkit-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
+        -o-filter: drop-shadow(0px,0px,0px, rgba(0,0,0,0));
 	}
 }
