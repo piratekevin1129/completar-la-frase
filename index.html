@@ -21,6 +21,7 @@
     <!--<link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />-->
 
     <script>
+        var nombre_game = ''
         var titulo_final = ''
         var titulo_final_mal = ''
         var mensaje_final = ''
@@ -42,6 +43,7 @@
 
             <!--div con la frase-->
             <div id="espacios-cont">
+                <div id="espacios-title"></div>
                 <div id="espacios-wrap">
                     
                 </div>
@@ -69,10 +71,10 @@
 
         <div id="instrucciones" class="instrucciones-off">
             <div id="instrucciones-box">
-                <div id="instrucciones-box-wrap">
-                    <h4 id="instrucciones_title"></h4><!--titulo-->
-                    <div id="instrucciones-close-btn" onclick="closeInstrucciones()"></div>
-                    
+                <h4 id="instrucciones_title"></h4><!--titulo-->
+                <div id="instrucciones-close-btn" onclick="closeInstrucciones()"></div>
+
+                <div id="instrucciones-box-wrap">    
                     <p id="instrucciones_txt"></p><!--Texto introductorio personalizado-->
                     <p id="instrucciones_inst"></p><!--Texto por defecto de las instrucciones-->
                     <div id="instrucciones-gif">
@@ -86,6 +88,8 @@
                         <div class="instrucciones-star"></div>
                     </div>
                 </div>
+
+                <button id="instrucciones-btn" onclick="closeInstrucciones()">Empezar</button>
             </div>
         </div>
 
@@ -190,6 +194,7 @@ var animacion_init = null
 function initGame(){
 
     //print all data
+    nombre_game = global_data.nombre
     titulo_final = global_data.titulo_final
     mensaje_final = global_data.mensaje_final
     titulo_final_mal = global_data.titulo_final_mal
@@ -197,6 +202,8 @@ function initGame(){
     titulo_instrucciones = global_data.titulo_instrucciones
     mensaje_instrucciones = global_data.mensaje_instrucciones
     numero_intentos = global_data.numero_intentos
+
+    getE('espacios-title').innerHTML = nombre_game
     getE('instrucciones_title').innerHTML = titulo_instrucciones
     getE('instrucciones_txt').innerHTML = mensaje_instrucciones
     getE('intentos_txt').innerHTML = numero_intentos

@@ -83,13 +83,14 @@
 }
 
 .palabra-element,#palabra-move{
-	background-color: #2ba4dd;
+	background-color: rgba(0,0,0,0);
 	border: rgba(0,0,0,0) solid 1px;
 	
 	box-sizing: border-box;
-	padding: 0px 15px;
+	padding: 0px 5px;
 	
 	border-radius: 0px 0px 0px 0px;
+	padding-bottom: 5px;
 
 	display: flex;
 	align-items: center;
@@ -109,6 +110,10 @@
 	margin: 0px;
 	cursor: grabbing;
 	z-index: 2;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url(../images/palabra-background.svg);
 }
 .palabra-move-off{
 	visibility: hidden;
@@ -124,7 +129,10 @@
 	-webkit-transform: scale(1);
 	-o-transform: scale(1);
 	opacity: 1;
-	box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);
+	filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
+	-webkit-filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
+	-o-filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
+	/*box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);*/
 }
 .palabra-move-moving{
 	transition: left 0.5s, top 0.5s;
@@ -137,7 +145,7 @@
 	font-size: 14px;
 	color: #FFFFFF;
 	text-align: center;
-	font-weight: normal;
+	font-weight: 400;
 	margin: 0px;
 	padding: 0px;
 	line-height: 10px;
@@ -177,25 +185,69 @@
 	-webkit-transform: scale(1) rotate(0deg);
 	-o-transform: scale(1) rotate(0deg);
 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url(../images/palabra-background.svg);
+
 	transition: visibility 0s, opacity 0.2s, transform 0.2s, -webkit-transform 0.2s, -o-transform 0.2s, box-shadow 0.2s, border 0.2s;
 	-webkit-transition: visibility 0s, opacity 0.2s, transform 0.2s, -webkit-transform 0.2s, -o-transform 0.2s, box-shadow 0.2s, border 0.2s;
 }
 .palabra_sola:hover{
-	box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);
-	border: rgba(0,0,0,1) solid 1px;
+	/*box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);
+	border: rgba(0,0,0,1) solid 1px;*/
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-o-transform: scale(1.1);
 }
 
 
 #espacios-cont{
 	position: relative;
 	margin: 0px auto;
-	width: 700px;
-	height: auto;
+	margin-top: 20px;
+	width: 530px;
+	height: 155px;
 	box-sizing: border-box;
 	border-radius: 4px;
 
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/frase-background.svg);
+
 	transition: background-color 0.5s;
 	-webkit-transition: background-color 0.5s;
+}
+#espacios-title{
+	position: absolute;
+	box-sizing: border-box;
+	width: 407px;
+	height: 40px;
+	margin: 0px;
+	padding: 0px;
+	padding-bottom: 13px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-family: 'Quicksand', sans-serif;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: 700;
+	line-height: normal;
+
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/nombre-background.svg);
+	left: 50%;
+	left: calc(50% - 203.5px);
+	left: -moz-calc(50% - 203.5px);
+	top: -22px;
+
+	text-shadow: 0px 0px 3px #7FAA41;
 }
 #espacios-wrap{
 	position: relative;
@@ -209,7 +261,9 @@
 	flex-direction: row;
 	align-content: center;
 	justify-content: center;
-	padding-top: 10px;
+	padding-top: 25px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .espacio-element{
@@ -247,6 +301,7 @@
 	background-color: #000000;
 	transition: width 0.2s, left 0.2s;
 	-webkit-transition: width 0.2s, left 0.2s;
+	display: none;
 }
 .espacio-element-fixed::after,
 .espacio-element-occuped::after{
@@ -274,9 +329,13 @@
 }
 .espacio-element-fixed,
 .espacio-element-occuped{
-	background-color: #FFFFFF;
+	background-color: rgba(255,255,255,0);
 }
 .espacio-element-empty{
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/espacio-background.svg);
 	background-color: rgba(255,255,255,0);
 }
 .espacio-element-occuped .espacio-palabra p{
@@ -301,13 +360,19 @@
 
 @keyframes animacion-espacio-active{
 	0% {
-		box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.5);
+		filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-o-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
 	}
 	50% {
-		box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+		filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
+		-webkit-filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
+		-o-filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
 	}
 	100% {
-		box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.5);
+		filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-o-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
 	}
 }
 @keyframes animacion-espacio-active-responsive{
