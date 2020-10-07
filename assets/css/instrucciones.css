@@ -76,7 +76,7 @@
 
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     color: #FFFFFF;
     font-weight: 700;
@@ -87,8 +87,8 @@
     padding-bottom: 12px;
     top: -22px;
     left: 50%;
-    left: calc(210px / 2);
-    left: -moz-calc(210px / 2);
+    left: calc(50% - (210px / 2));
+    left: -moz-calc(50% - (210px / 2));
 
     text-shadow: 0px 0px 3px #7FAA41;
     background-image: url(../images/instrucciones-title-back.svg);
@@ -787,8 +787,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     12% {
         top: 50%;
@@ -796,8 +794,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     13%{
         top: 50%;
@@ -805,8 +801,6 @@
         transform: translateY(-10px) scale(1.2);
         -webkit-transform: translateY(-10px) scale(1.2);
         -o-transform: translateY(-10px) scale(1.2);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     25%{
         top: 50%;
@@ -814,8 +808,6 @@
         transform: translateY(-10px) scale(1.2);
         -webkit-transform: translateY(-10px) scale(1.2);
         -o-transform: translateY(-10px) scale(1.2);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     27% {
         left: 100%;
@@ -825,8 +817,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     29%{
         left: 100%;
@@ -836,8 +826,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #FFFFFF;
-        color: #2ba4dd;
     }
     100%{
         left: 100%;
@@ -846,9 +834,7 @@
         top: -100%;
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
-        -o-transform: translateY(-10px) scale(1);
-        background-color: #FFFFFF;
-        color: #2ba4dd;
+        -o-transform: translateY(-10px) scale(1);;
     }
 }
 @keyframes animation-cuadro-mobile2{
@@ -860,8 +846,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     36% {
         top: 50%;
@@ -871,8 +855,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     37%{
         top: 50%;
@@ -882,8 +864,6 @@
         transform: translateY(-10px) scale(1.2);
         -webkit-transform: translateY(-10px) scale(1.2);
         -o-transform: translateY(-10px) scale(1.2);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     48% {
         top: 50%;
@@ -893,8 +873,6 @@
         transform: translateY(-10px) scale(1.2);
         -webkit-transform: translateY(-10px) scale(1.2);
         -o-transform: translateY(-10px) scale(1.2);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     49%{
         top: -100%;
@@ -902,8 +880,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     50%{
         top: -100%;
@@ -911,18 +887,13 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #FFFFFF;
-        color: #2ba4dd;
     }
     100%{
         top: -100%;
         left: 2.5%;
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
-        -o-transform: translateY(-10px) scale(1);
-        background-color: #FFFFFF;
-        color: #2ba4dd;
-    }
+        -o-transform: translateY(-10px) scale(1);    }
 }
 @keyframes animation-cuadro-mobile3{
     0% {
@@ -933,8 +904,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     60% {
         top: 50%;
@@ -944,8 +913,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     61%{
         top: 50%;
@@ -955,8 +922,6 @@
         transform: translateY(-10px) scale(1.2);
         -webkit-transform: translateY(-10px) scale(1.2);
         -o-transform: translateY(-10px) scale(1.2);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     72% {
         top: 50%;
@@ -966,8 +931,6 @@
         transform: translateY(-10px) scale(1.2);
         -webkit-transform: translateY(-10px) scale(1.2);
         -o-transform: translateY(-10px) scale(1.2);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     73%{
         left: 50%;
@@ -977,8 +940,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #2ba4dd;
-        color: #FFFFFF;
     }
     74%{
         left: 50%;
@@ -988,8 +949,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #FFFFFF;
-        color: #2ba4dd;
     }
     100%{
         left: 50%;
@@ -999,8 +958,6 @@
         transform: translateY(-10px) scale(1);
         -webkit-transform: translateY(-10px) scale(1);
         -o-transform: translateY(-10px) scale(1);
-        background-color: #FFFFFF;
-        color: #2ba4dd;
     }
 }
 @keyframes animation-demo-espacio-mobile{

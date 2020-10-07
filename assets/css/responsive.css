@@ -687,10 +687,10 @@
 	#espacios-title{
 		font-size: 16px;
 		left: 50%;
-		left: calc(50% - 175px);
-		left: -moz-calc(50% - 175px);
+		left: calc(50% - 150px);
+		left: -moz-calc(50% - 150px);
 		top: -45px;
-		width: 350px;
+		width: 300px;
 		background-image: url(../images/nombre-background-responsive.svg);
 	}
 
@@ -799,20 +799,27 @@
 	    width: 280px;
 	    height: 150px;
 	}
+	.mobi-col-1,.mobi-col-2,.mobi-col-3{
+		background-position: 0px 0px;
+		padding-bottom: 10px;
+	}
 	#instrucciones-box{
+		top: -18px;
 		width: 300px;
+		height: 400px;
 		margin: 0px auto;
-		margin-top: 30px;
+
+		margin-top: 50px;
+		background-image: url(../images/instrucciones-background-responsive.svg);
 	}
 	#instrucciones-box-wrap > p{
 		margin: 15px 0px;
 	}
 	#instrucciones-box-wrap{
-	    max-height: 570px;
+	    max-height: 320px;
 	}
 	#instrucciones_title{
-	    font-size: 15px;
-	    margin-bottom: 10px;
+	    
 	}
 	#instrucciones-close-btn{
 		cursor: default;
