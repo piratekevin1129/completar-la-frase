@@ -32,7 +32,7 @@ function prepareWindow(){
         actual_dimension = 4
         game_width = window.innerWidth
         game_height = 700
-        //ismobile = true
+        ismobile = true
         isresponsive = true
 
         window.top.postMessage({'completado': false, 'alto': game_height}, '*' );

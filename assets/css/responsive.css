@@ -176,6 +176,11 @@
 		height: 30px;
 	}
 
+	.espacio-element-empty,.espacio-element-occuped{
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
 	.espacio-element-active{
 		animation-name: animacion-espacio-active;
 		animation-duration: 1s;
@@ -362,6 +367,11 @@
 		height: 30px;
 	}
 
+	.espacio-element-empty,.espacio-element-occuped{
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
 	.espacio-element-active{
 		animation-name: animacion-espacio-active-responsive;
 		animation-duration: 1s;
@@ -498,7 +508,6 @@
 	    top: 40px;
 	    z-index: 2;
 	}
-
 }
 
 @media (min-width: 280px) and (max-width: 529px){
@@ -528,10 +537,86 @@
 	
 	/**********CONTENIDO AQUI************/
 	#comprobar-btn{
-		width: 150px;
-		height: 30px;
-		font-size: 14px;
+		margin-top: 15px;
 	}
+
+	.espacios-cont-corner-1,
+	.espacios-cont-corner-2,
+    .espacios-cont-corner-3,
+    .espacios-cont-corner-4,
+    .espacios-cont-corner-top,
+    .espacios-cont-corner-bottom,
+    .espacios-cont-corner-right,
+    .espacios-cont-corner-left
+	{
+		position: absolute;
+	}
+	.espacios-cont-corner-1,
+	.espacios-cont-corner-2,
+    .espacios-cont-corner-3,
+    .espacios-cont-corner-4{
+    	width: 23px;
+    	height: 21px;
+    	background-position: center;
+    	background-size: contain;
+    	background-repeat: no-repeat;
+    }
+    .espacios-cont-corner-1{
+    	top: -21px;
+    	left: -23px;
+    	background-image: url(../images/template/corner-1.png);
+    }
+	.espacios-cont-corner-2{
+		top: -21px;
+    	left: 100%;
+		background-image: url(../images/template/corner-2.png);
+	}
+    .espacios-cont-corner-3{
+    	top: 100%;
+    	left: -23px;
+    	background-image: url(../images/template/corner-3.png);
+    }
+    .espacios-cont-corner-4{
+    	top: 100%;
+    	left: 100%;
+    	background-image: url(../images/template/corner-4.png);
+    }
+
+    .espacios-cont-corner-top,
+    .espacios-cont-corner-bottom{
+    	width: 100%;
+    	height: 21px;
+    	background-repeat: repeat-x;
+    	background-position: 0px 0px;
+    }
+    .espacios-cont-corner-left,
+    .espacios-cont-corner-right{
+    	width: 23px;
+    	height: 100%;
+    	background-repeat: repeat-y;
+    	background-position: 0px 0px;
+    }
+    
+    .espacios-cont-corner-left{
+    	left: -23px;
+    	top: 0px;
+    	background-image: url(../images/template/corner-left.png);
+    }
+    .espacios-cont-corner-right{
+    	left: 100%;
+    	top: 0px;
+    	background-image: url(../images/template/corner-right.png);
+    }
+    .espacios-cont-corner-top{
+    	left: 0px;
+    	top: -21px;
+    	background-image: url(../images/template/corner-top.png);
+    }
+    .espacios-cont-corner-bottom{
+    	left: 0px;
+    	top: 100%;
+    	background-image: url(../images/template/corner-bottom.png);
+    }
 
 	#palabra-move,
 	.palabra-element,
@@ -539,13 +624,19 @@
 	.espacio-element-occuped,
 	.espacio-element-occuped .espacio-palabra::after
 	{
-		width: 120px;
-		height: 35px;
+		width: 100px;
+		height: 30px;
 	}
 	.espacio-element-fixed{
 		width: auto;
 		height: 35px;
 	}
+
+	.espacio-element-empty,.espacio-element-occuped{
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
 	.espacio-element-active{
 		animation-name: animacion-espacio-active-responsive;
 		animation-duration: 1s;
@@ -575,8 +666,10 @@
 	}
 
 	.palabra-element,#palabra-move{
-		padding: 0px 10px;
+		padding: 0px 5px;
+		padding-bottom: 5px;
 	}
+	
 	.palabra-element{
 		margin: 0px 5px;
 		margin-bottom: 10px;
@@ -591,18 +684,32 @@
 		-webkit-transition: none;
 	}
 
+	#espacios-title{
+		font-size: 16px;
+		left: 50%;
+		left: calc(50% - 175px);
+		left: -moz-calc(50% - 175px);
+		top: -45px;
+		width: 350px;
+		background-image: url(../images/nombre-background-responsive.svg);
+	}
+
 	#espacios-cont{
 		margin: 0px auto;
 		width: 100%;
-		width: calc(100% - 15px);
-		width: -moz-calc(100% - 15px);
+		width: calc(100% - 60px);
+		width: -moz-calc(100% - 60px);
+		margin-top: 50px;
 		height: auto;
-		margin-top: 20px;
+		background-image: url(../images/template/center.png);
+		background-repeat: repeat;
 	}
 	#espacios-wrap{
 		width: 100%;
 		height: auto;
 		margin: 0px;
+		padding: 0px;
+		padding-top: 10px;
 	}
 	.espacio-palabra p{
 		text-align: left;
