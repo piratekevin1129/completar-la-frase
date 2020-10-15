@@ -16,12 +16,15 @@
 	}
 
     #palabra-move,
-	.palabra-element,
+	.palabra-element{
+		width: 100px;
+		height: 30px;
+	}
 	.espacio-element-empty,
 	.espacio-element-occuped,
 	.espacio-element-occuped .espacio-palabra::after
 	{
-		width: 100px;
+		width: 90px;
 		height: 30px;
 	}
 	.espacio-element-empty,.espacio-element-occuped{
@@ -648,7 +651,7 @@
 		-webkit-animation-timing-function: linear;
 		z-index: 1;
 		border-radius: 0px 0px 0px 0px;
-	}	
+	}
 
 	#palabras-cont{
 		width: 100%;
@@ -689,7 +692,7 @@
 		left: 50%;
 		left: calc(50% - 150px);
 		left: -moz-calc(50% - 150px);
-		top: -45px;
+		top: -43px;
 		width: 300px;
 		background-image: url(../images/nombre-background-responsive.svg);
 	}
@@ -713,6 +716,9 @@
 	}
 	.espacio-palabra p{
 		text-align: left;
+	}
+	.palabra-element p,#palabra-move p,.espacio-palabra p{
+		font-size: 13px;
 	}
 
 	.espacio-eliminar{
@@ -819,7 +825,7 @@
 	    max-height: 320px;
 	}
 	#instrucciones_title{
-	    
+	    top: -17px;
 	}
 	#instrucciones-close-btn{
 		cursor: default;

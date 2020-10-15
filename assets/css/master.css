@@ -158,7 +158,6 @@ body,html{
 }
 .espacio-palabra p{
 	color: #000000;
-	top: -1px;
 }
 /*estilo para el mousedown*/
 .palabra_clicked{

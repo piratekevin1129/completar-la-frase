@@ -63,13 +63,14 @@
 
 #modal-title{
     position: absolute;
-    width: 195px;
+    box-sizing: border-box;
+    width: 260px;
     height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0px;
-    padding: 0px;
+    padding: 0px 14px;
     padding-bottom: 10px;
 
     font-family: 'Quicksand', sans-serif;
@@ -81,9 +82,10 @@
 
     text-shadow: 0px 0px 4px #7FAA41;
     left: 50%;
-    left: calc(50% - (195px / 2));
-    left: -moz-calc(50% - (195px / 2));
-    top: -25px;
+    left: calc(50% - (260px / 2));
+    left: -moz-calc(50% - (260px / 2));
+    top: -17px;
+    white-space: nowrap;
 
     background-position: center;
     background-repeat: no-repeat;
@@ -108,47 +110,25 @@
 
 #modal-close-msg{
     position: absolute;
-    width: 12px;
-    height: 12px;
-    right: 7px;
-    top: 7px;
+    width: 40px;
+    height: 40px;
+    right: -7px;
+    top: -7px;
+    cursor: pointer;
+    background-image: url(../images/instrucciones-close.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 10;
-}
-#modal-close-msg::after,
-#modal-close-msg::before{
-    position: absolute;
-    content: "";
-    width: 12px;
-    height: 2px;
-    background-color: #FFFFFF;
-    border-radius: 2px;
-    top: 50%;
-    top: calc(50% - 1px);
-    top: -moz-calc(50% - 1px);
-    left: 50%;
-    left: calc(50% - 6px);
-    left: -moz-calc(50% - 6px);
 
-    transform-origin: center;
-    -webkit-transform-origin: center;
-    -o-transform-origin: center;
-    background-color: #FFFFFF;
-}
-#modal-close-msg::after{
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-}
-#modal-close-msg::before{
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
+    transition: transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s;
+    -webkit-transition: box-shadow 0.1s, -webkit-transform 0.1s, -o-transform 0.1s;
 }
 #modal-close-msg:hover{
     cursor: pointer;
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -o-transform: scale(1.2);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
 
 #modal-continue-btn{

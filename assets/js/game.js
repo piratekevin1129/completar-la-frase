@@ -421,7 +421,14 @@ function comprobarJuego(){
 
 function acomodarPalabra(p){
 	if(p==palabras_correctas.length){
-		setModal({msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:false})
+		setModal({
+			title:titulo_final_mal,
+			msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',
+			close:false,
+			continue:true,
+			action:'reloadGame',
+			label:'Aceptar'
+		})
 	}else{
 		var espacio_e = palabras_correctas[p].ee
 		var rect_espacio = espacio_e.getBoundingClientRect()
