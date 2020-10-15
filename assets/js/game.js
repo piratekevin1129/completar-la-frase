@@ -30,6 +30,7 @@ var posx_e = 0
 var posy_e = 0
 var unorder_array = []
 var prefrase = ""
+var frase_corta = ""
 var frase_cortada = []
 var respuesta_cortada = []
 var palabras_correctas = []
@@ -51,6 +52,7 @@ function isemptyword(wo){
 function setGame(){
 	total_sentence = global_data.sentence.split(" ")
 	total_words = global_data.words
+	frase_corta = String(global_data.sentence).replace(new RegExp(" ","g"), "")
 
 	for(i = 0;i<total_words.length;i++){
 		if(!total_sentence.includes(total_words[i].word)){
@@ -73,7 +75,10 @@ function setGame(){
 	//console.log(frase_cortada)
 	//console.log(respuesta_cortada)
 	//console.log(palabras_fake)
+	resetGame(true)
+}
 
+function resetGame(start){
 	for(i = 0;i<frase_cortada.length;i++){
 		var u = i
 
@@ -97,8 +102,8 @@ function setGame(){
 			h+='<div class="espacio-palabra">'+'<p>'+frase_cortada[i]+'</p>'+'</div>'
 			ee.setAttribute('key',frase_cortada[i])
 		}
+
 		ee.setAttribute('ind',u)
-		
 		ee.setAttribute('value','')
 		
 		ee.innerHTML = h
@@ -144,6 +149,10 @@ function setGame(){
 				}
 			}
 		}
+	}
+
+	if(!start){
+		empezarJuego()
 	}
 }
 
@@ -354,7 +363,7 @@ function comprobarJuego(){
 	//verificar que todos los espacios esten llenos
 	var espacios_llenos = 0
 	for(i = 0;i<espacios_coll.length;i++){
-		if(espacios_coll[i].getAttribute('value')==""){
+		if(espacios_coll[i].getAttribute('key')==""){
 			espacios_llenos++
 		}
 	}
@@ -369,22 +378,13 @@ function comprobarJuego(){
 		var esta = false
 		//console.log(frase)
 
-		var frase_corta = String(prefrase).replace(new RegExp(" ","g"), "")
-		
+		//console.log(frase+'...'+frase_corta)
 		if(frase==frase_corta){
 			esta = true
 		}
 
 		if(esta){
-			//guardar attemp
-			attemps_data.push({
-				statement:"",
-				approved:true,
-				time_activity:computeTime(),
-				created_at: computeDate(),
-				sentences: ["perro", "gato"]
-			})
-			
+			saveAttemp(false)//guardar attemp
 
 			//alert("bien, ganaste")
 			$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
@@ -402,7 +402,9 @@ function comprobarJuego(){
 			})
 
 			//enviar data
+			console.log(attemps_data)
 		}else{
+			saveAttemp(true)//guardar attemp
 			var stars = getE('tra_estrellas').getElementsByClassName('tra_estrella')
 			//quitar estrella
 			stars[intentos].classList.remove('tra_estrella_off')
@@ -422,7 +424,15 @@ function comprobarJuego(){
 				if(!ismobile){
 					acomodarPalabra(0)	
 				}else{
-					j = 0
+					setModal({
+						title:titulo_final_mal,
+						msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Aceptar</span> para jugar de nuevo',
+						close:false,
+						continue:true,
+						action:'reloadGame',
+						label:'Aceptar'
+					})
+					/*j = 0
 
 					animacion_palabra_correcta = setInterval(function(){
 						if(j==palabras_correctas.length){
@@ -457,7 +467,7 @@ function comprobarJuego(){
 							
 							j++
 						}	
-					},300)
+					},300)*/
 				}
 				
 			}else{
@@ -485,12 +495,33 @@ function comprobarJuego(){
 			label:'Aceptar'
 		})
 	}
+}
 
-		
+function saveAttemp(app){
+	var array_sentence = []
+	for(var s = 0;s<espacios_coll.length;s++){
+		array_sentence.push(espacios_coll[s].getAttribute('key'))
+	}
+	attemps_data.push({
+		statement:"",
+		approved:app,
+		time_activity:computeTime(),
+		created_at: computeDate(),
+		sentences: array_sentence
+	})
+	startTimer()//reeiniciar tiempo
 }
 
 function acomodarPalabra(p){
-	if(p==palabras_correctas.length){
+	setModal({
+		title:titulo_final_mal,
+		msg:mensaje_final_mal+'<br />Toca en el botón <span>Aceptar</span> para jugar de nuevo',
+		close:false,
+		continue:true,
+		action:'reloadGame',
+		label:'Aceptar'
+	})
+	/*if(p==palabras_correctas.length){
 		setModal({
 			title:titulo_final_mal,
 			msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Aceptar</span> para jugar de nuevo',
@@ -540,7 +571,7 @@ function acomodarPalabra(p){
 				acomodarPalabra(p)
 			},500)
 		},50)
-	}	
+	}*/
 }
 
 /**********MODALES***********/
@@ -647,20 +678,23 @@ function closeInstrucciones(){
 		first_instrucciones = false
 		
 		underground_mp3.play()
-		setTimer()
-		j = 0
-		animacion_palabra_correcta = setInterval(function(){
-			if(j==palabras_coll.length){
-				clearInterval(animacion_palabra_correcta)
-				animacion_palabra_correcta = null
-			}else{
-				palabras_coll[j].classList.remove('palabra_clicked')
-				palabras_coll[j].classList.add('palabra_sola')
-				j++
-			}
-		},100)
+		empezarJuego()
 	}
 	instrucciones.className = 'instrucciones-off'
+}
+function empezarJuego(){
+	setTimer()
+	j = 0
+	animacion_palabra_correcta = setInterval(function(){
+		if(j==palabras_coll.length){
+			clearInterval(animacion_palabra_correcta)
+			animacion_palabra_correcta = null
+		}else{
+			palabras_coll[j].classList.remove('palabra_clicked')
+			palabras_coll[j].classList.add('palabra_sola')
+			j++
+		}
+	},100)
 }
 
 var first_instrucciones = true
@@ -673,8 +707,69 @@ function getE(idname){
 	return document.getElementById(idname)
 }
 
+var animacion_reload = null
 function reloadGame(){
-	location.reload()
+	//location.reload()
+	//poner cargador 
+	cargador.className = 'cargador-on'
+
+	animacion_reload = setTimeout(function(){
+		cargador.className = 'cargador-off'
+		clearTimeout(animacion_reload)
+		animacion_reload= null
+
+		//limpiar timeouts
+		clearTimeout(animacion_quitar_palabra)
+		animacion_quitar_palabra = null
+
+		clearInterval(animacion_palabra_correcta)
+		animacion_palabra_correcta = null
+
+		clearTimeout(animacion_word_correcta)
+		animacion_word_correcta = null
+
+		clearTimeout(animacion_modal_delay)
+		animacion_modal_delay = null
+
+		clearTimeout(animacion_modal_autoclose)
+		animacion_modal_autoclose = null
+
+		//limpiar contenedores
+		getE('palabras-wrap').innerHTML = ''
+		getE('espacios-wrap').innerHTML = ''
+		getE('comprobar-btn').disabled = false
+
+		//limpiar estrellas
+		var stars_content = document.getElementById('tra_estrellas')
+		var stars = stars_content.getElementsByClassName('tra_estrella')
+		for(i = 0;i<stars.length;i++){
+			stars[i].className = "tra_estrella tra_estrella_off"
+		}
+
+		//resetear variables
+		i = 0
+		j = 0
+		k = 0
+
+		palabra_clicked = null
+		palabra_clicked_rect = null
+		espacios_coll = []
+		frases_coll = []
+		palabras_coll = []
+		palabras_list = []
+		
+		posx_e = 0
+		posy_e = 0
+		unorder_array = []
+
+		palabras_correctas = []
+		intentos = 0
+
+		unsetModal()
+
+		//volver a empezar
+		resetGame()
+	},1000)
 }
 
 function nextTema(){

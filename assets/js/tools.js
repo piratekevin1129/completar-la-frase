@@ -92,6 +92,9 @@ function iniciarReloj(){
 function pararReloj(){
     clearInterval(animacion_reloj)
 }
+function reanudarReloj(){
+    animacion_reloj = setInterval(animacionReloj,1000)
+}
 function animacionReloj(){
     time_scorm+=1
     document.getElementById('tra_tiempo_txt').innerHTML = getTimeText(time_scorm,true)
