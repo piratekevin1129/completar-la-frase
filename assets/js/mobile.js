@@ -1,4 +1,4 @@
-var instrucciones_inst_txt = 'Arrastra cada palabra al espacio que falta en la frase para completarla'
+var instrucciones_inst_txt = 'Arrastra cada palabra al espacio que falta en la frase para completarla.'
 var instrucciones_gif_txt = '<div class="demo-row2"><div class="demo-col-4"></div><div class="demo-col-44">xxx</div><div class="demo-col-5"></div><div class="demo-col-55">xxx</div><div class="demo-col-6"></div></div> <div class="demo-row1"><div class="demo-col-1">xxx</div><div class="demo-col-2">xxx</div><div class="demo-col-3">xxx</div></div> <div class="demo-cursor"></div>'
 
 var ismobile = false

@@ -29,16 +29,50 @@ var palabras_fake = []
 var posx_e = 0
 var posy_e = 0
 var unorder_array = []
+var prefrase = ""
 var frase_cortada = []
 var respuesta_cortada = []
 var palabras_correctas = []
 
+var total_sentence = []
+var total_words = []
+var total_fakes = []
+function isemptyword(wo){
+	var isword = false
+
+	for(var w = 0;w<total_words.length;w++){
+		if(wo==total_words[w].word){
+			isword = true
+		}
+	}
+	return isword
+}
+
 function setGame(){
-	frase_cortada = global_data.frase.split(" ")
-	respuesta_cortada = global_data.respuesta.split(" ")
-	palabras_fake = global_data.otros
-	//unorderArray(frase_cortada.length)
-	//console.log(unorder_array)
+	total_sentence = global_data.sentence.split(" ")
+	total_words = global_data.words
+
+	for(i = 0;i<total_words.length;i++){
+		if(!total_sentence.includes(total_words[i].word)){
+			total_fakes.push(total_words[i].word)
+		}
+	}
+
+	for(i = 0;i<total_sentence.length;i++){
+		var single_word = total_sentence[i]
+		if(isemptyword(single_word)){
+			total_sentence[i] = '__'+single_word+'__'
+		}
+	}
+	prefrase = total_sentence.join(" ")
+
+	frase_cortada = prefrase.split(" ")
+	respuesta_cortada = global_data.sentence.split(" ")
+	palabras_fake = total_fakes
+
+	//console.log(frase_cortada)
+	//console.log(respuesta_cortada)
+	//console.log(palabras_fake)
 
 	for(i = 0;i<frase_cortada.length;i++){
 		var u = i
@@ -142,6 +176,7 @@ function clickPalabra(idname){
 		}
 	}
 }
+
 function clickEspacio(idname){
 	//mirar que no este clickeado ya
 	var clase_clicked = palabra_clicked.className
@@ -220,12 +255,14 @@ function downPalabra(palabra_div,e){
 		}
 	}
 }
+
 function movePalabra(e){
 	posx_e = e.pageX
 	posy_e = e.pageY
 	palabra_move.style.left = (posx_e-(palabra_clicked_rect.width/2))+'px'
 	palabra_move.style.top = (posy_e-(palabra_clicked_rect.height/2))+'px'
 }
+
 function upPalabra(e){
 	window.removeEventListener('mousemove',movePalabra,false)
 	window.removeEventListener('mouseup',upPalabra,false)
@@ -311,119 +348,152 @@ function quitarPalabra(btn,s){
 var intentos = 0
 var animacion_palabra_correcta = null
 var animacion_word_correcta = null
+var attemps_data = []
 
 function comprobarJuego(){
-	var frase = ""
-	
+	//verificar que todos los espacios esten llenos
+	var espacios_llenos = 0
 	for(i = 0;i<espacios_coll.length;i++){
-		frase+=espacios_coll[i].getAttribute('key')
-	}
-	
-	var esta = false
-	//console.log(frase)
-
-	var frase_corta = String(global_data.respuesta).replace(new RegExp(" ","g"), "")
-	
-	if(frase==frase_corta){
-		esta = true
+		if(espacios_coll[i].getAttribute('value')==""){
+			espacios_llenos++
+		}
 	}
 
-	if(esta){
-		//alert("bien, ganaste")
-		$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
-		pararReloj()
-		getE('espacios-cont').classList.add('frase-wrap-win')
-		setModal({
-			title:titulo_final,
-			msg:mensaje_final,
-			icon:'success',
-			close:false,
-			continue:true,
-			action:'nextTema',
-			label:'Continuar',
-			delay:1500
-		})
-	}else{
-		var stars = getE('tra_estrellas').getElementsByClassName('tra_estrella')
-		//quitar estrella
-		stars[intentos].classList.remove('tra_estrella_off')
-		stars[intentos].classList.add('tra_estrella_on')
-		incorrect_mp3.currentTime = 0
-		incorrect_mp3.play()
+	if(espacios_llenos==0){
+		var frase = ""
 		
-		intentos++
-		$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
-		if(intentos==3){
-			//alert("perdiste")
-			//mostrar la correcta
-			pararReloj()
-			getE('comprobar-btn').disabled = true
-			//getE('frase-correcta-txt').className = 'frase-correcta-txt-show'
+		for(i = 0;i<espacios_coll.length;i++){
+			frase+=espacios_coll[i].getAttribute('key')
+		}
+		
+		var esta = false
+		//console.log(frase)
 
-			if(!ismobile){
-				acomodarPalabra(0)	
-			}else{
-				j = 0
+		var frase_corta = String(prefrase).replace(new RegExp(" ","g"), "")
+		
+		if(frase==frase_corta){
+			esta = true
+		}
 
-				animacion_palabra_correcta = setInterval(function(){
-					if(j==palabras_correctas.length){
-						clearInterval(animacion_palabra_correcta)
-						animacion_palabra_correcta = null
-						
-						setModal({
-							title:titulo_final_mal,
-							msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',
-							close:false,
-							continue:true,
-							action:'reloadGame',
-							label:'Aceptar'
-						})
-					}else{
-						var espacio_e = palabras_correctas[j].ee
-						var palabra_d = palabras_correctas[j].pe
-
-						palabra_d.classList.remove('palabra_sola')
-						palabra_d.classList.add('palabra_clicked')
-
-						over_mp3.currentTime = 0
-						over_mp3.play()
-
-						espacio_e.classList.remove('espacio-element-empty')
-						espacio_e.classList.add('espacio-element-occuped')
-						espacio_e.setAttribute('key',palabra_d.getAttribute('key'))
-						espacio_e.setAttribute('value',palabra_d.getAttribute('ind'))
-
-						var texto = espacio_e.getElementsByClassName('espacio-palabra')[0]
-						texto.innerHTML = palabra_d.innerHTML
-						
-						j++
-					}	
-				},300)
-			}
+		if(esta){
+			//guardar attemp
+			attemps_data.push({
+				statement:"",
+				approved:true,
+				time_activity:computeTime(),
+				created_at: computeDate(),
+				sentences: ["perro", "gato"]
+			})
 			
+
+			//alert("bien, ganaste")
+			$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
+			pararReloj()
+			getE('espacios-cont').classList.add('frase-wrap-win')
+			setModal({
+				title:titulo_final,
+				msg:mensaje_final,
+				icon:'success',
+				close:false,
+				continue:true,
+				action:'nextTema',
+				label:'Continuar',
+				delay:1500
+			})
+
+			//enviar data
 		}else{
-			//dejar las buenas y quitar las malas
-			for(i = 0;i<espacios_coll.length;i++){
-				var key = espacios_coll[i].getAttribute('key')
-				if(key!=''){
-					if(key==respuesta_cortada[i]){
-						//este esta bueno
-					}else{
-						//quitar este
-						var btn = espacios_coll[i].getElementsByClassName('espacio-eliminar')[0]
-						quitarPalabra(btn,true)
+			var stars = getE('tra_estrellas').getElementsByClassName('tra_estrella')
+			//quitar estrella
+			stars[intentos].classList.remove('tra_estrella_off')
+			stars[intentos].classList.add('tra_estrella_on')
+			incorrect_mp3.currentTime = 0
+			incorrect_mp3.play()
+			
+			intentos++
+			$("html, body").animate({ scrollTop: $('#tra_body').offset().top }, 500);
+			if(intentos==3){
+				//alert("perdiste")
+				//mostrar la correcta
+				pararReloj()
+				getE('comprobar-btn').disabled = true
+				//getE('frase-correcta-txt').className = 'frase-correcta-txt-show'
+
+				if(!ismobile){
+					acomodarPalabra(0)	
+				}else{
+					j = 0
+
+					animacion_palabra_correcta = setInterval(function(){
+						if(j==palabras_correctas.length){
+							clearInterval(animacion_palabra_correcta)
+							animacion_palabra_correcta = null
+							
+							setModal({
+								title:titulo_final_mal,
+								msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Aceptar</span> para jugar de nuevo',
+								close:false,
+								continue:true,
+								action:'reloadGame',
+								label:'Aceptar'
+							})
+						}else{
+							var espacio_e = palabras_correctas[j].ee
+							var palabra_d = palabras_correctas[j].pe
+
+							palabra_d.classList.remove('palabra_sola')
+							palabra_d.classList.add('palabra_clicked')
+
+							over_mp3.currentTime = 0
+							over_mp3.play()
+
+							espacio_e.classList.remove('espacio-element-empty')
+							espacio_e.classList.add('espacio-element-occuped')
+							espacio_e.setAttribute('key',palabra_d.getAttribute('key'))
+							espacio_e.setAttribute('value',palabra_d.getAttribute('ind'))
+
+							var texto = espacio_e.getElementsByClassName('espacio-palabra')[0]
+							texto.innerHTML = palabra_d.innerHTML
+							
+							j++
+						}	
+					},300)
+				}
+				
+			}else{
+				//dejar las buenas y quitar las malas
+				for(i = 0;i<espacios_coll.length;i++){
+					var key = espacios_coll[i].getAttribute('key')
+					if(key!=''){
+						if(key==respuesta_cortada[i]){
+							//este esta bueno
+						}else{
+							//quitar este
+							var btn = espacios_coll[i].getElementsByClassName('espacio-eliminar')[0]
+							quitarPalabra(btn,true)
+						}
 					}
 				}
 			}
 		}
+	}else{
+		setModal({
+			title:"Incompleto",
+			msg:"Asegúrate de completar toda la frase para comprobar",
+			close:false,
+			continue:true,
+			label:'Aceptar'
+		})
 	}
+
+		
 }
 
 function acomodarPalabra(p){
 	if(p==palabras_correctas.length){
 		setModal({
 			title:titulo_final_mal,
-			msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',
+			msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Aceptar</span> para jugar de nuevo',
 			close:false,
 			continue:true,
 			action:'reloadGame',
@@ -520,7 +590,7 @@ function setModal(params){
 		document.getElementById('modal-continue-btn').setAttribute('onclick','unsetModal()')
 	}
 
-	if(params.label!=null&&params.action!=undefined){
+	if(params.label!=null&&params.label!=undefined){
 		document.getElementById('modal-continue-btn').innerHTML = params.label
 	}else{
 		document.getElementById('modal-continue-btn').innerHTML = 'Continuar'
@@ -604,7 +674,7 @@ function getE(idname){
 }
 
 function reloadGame(){
-
+	location.reload()
 }
 
 function nextTema(){

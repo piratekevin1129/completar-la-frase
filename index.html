@@ -85,7 +85,7 @@
 
         <div id="instrucciones" class="instrucciones-off">
             <div id="instrucciones-box">
-                <h4 id="instrucciones_title"></h4><!--titulo-->
+                <h4 id="instrucciones_title">Instrucciones</h4><!--titulo-->
                 <div id="instrucciones-close-btn" onclick="closeInstrucciones()"></div>
 
                 <div id="instrucciones-box-wrap">    
@@ -94,7 +94,7 @@
                     <div id="instrucciones-gif">
                         <!--aqui va html del gif animado con css--> 
                     </div>
-                    <p>Haz clic en el botón <span>Comprobar</span> para verificar si la frase está en el orden correcto.</p>
+                    <p>Haz clic en el botón <span>Comprobar</span> para verificar si la frase es correcta.</p>
                     <p>Tienes <span id="intentos_txt"></span> oportunidades.</p>
                     <div class="instrucciones-starts">
                         <div class="instrucciones-star"></div>
@@ -126,11 +126,11 @@
                         <div onclick="openInstrucciones()"></div>
                         <p>Instrucciones</p>
                     </div>
-                    <div id="tra_reload_col">
+                    <!--<div id="tra_reload_col">
                         <section></section>
                         <div onclick="reloadGame()"></div>
                         <p>Reiniciar el juego</p>
-                    </div>
+                    </div>-->
                     <div id="tra_music_col" class="tra_music_on">
                         <section></section>
                         <div onclick="toggleAudio()"></div>
@@ -154,8 +154,9 @@
 
 <script src="assets/js/mobile.js"></script>
 <script src="assets/js/tools.js"></script>
-<script src="assets/js/scorm.js"></script>
+<script src="assets/js/core.js"></script>
 <script src="assets/js/game.js"></script>
+
 <script>
 
 prepareWindow()
@@ -168,11 +169,12 @@ var button_mp3 = null
 var over_mp3 = null
 
 var global_data = null
-window.onload = function(){
-    $.getJSON("assets/db.json", function(json) {
-        //console.log(json); // this will show the info it in firebug console
-        global_data = json
+document.getElementById('tra_record_col').style.visibility = 'hidden'
 
+window.onload = function(){
+    //$.getJSON("assets/db.json", function(json) {
+        //console.log(json); // this will show the info it in firebug console
+        
         loadAudio({src:'assets/media/drag.mp3',callBack:function(data){
         drag_mp3 = data
         loadAudio({src:'assets/media/incorrect.mp3',callBack:function(data){
@@ -187,9 +189,7 @@ window.onload = function(){
         over_mp3 = data
         
             //initScorm()
-
-            document.getElementById('tra_record_col').style.visibility = 'hidden'
-            initGame()
+            loadCoreData()
 
         }})
         }})
@@ -198,7 +198,54 @@ window.onload = function(){
         }})
         }})
         
-    });
+    //});
+}
+function loadedCoreData(json){
+
+    //json de ejemplo
+    json = {
+        title: "Complete la sentence",
+        description: null,
+        content_resource_id: 5,
+        title_message_final: "muy bien",
+        message_final: "en hora buena, has ganado",
+        title_message_reprobate: "muy mal",
+        message_reprobate: "lo siento chico, has perdido",
+        enable_time_question: null,
+        score: null,
+        attemps_fail: null,
+        number_question_approved: null,
+        question_time_minute: null,
+        question_time_second: null,
+        questions: [],
+        questions_wildcards: [],
+        enable_question_wilcard: null,
+        score_question_wildcard: null,
+        challenges: [],
+        preLoad: "true",
+        downloadable: 0,
+        type: "resource",
+        rows_questions_roulette: null,
+        rows_challenges_roulette: null,
+        sentence: "El 20% del oxigeno de la tierra es producido por la selva Amazonas",
+        words: [
+            {word: "oxigeno"},
+            {word: "tierra"},
+            {word: "por"},
+            {word: "Amazonas"},
+            {word: "gas"},
+            {word: "atmósfera"},
+            {word: "en"},
+            {word: "tropical"},
+            {word: "planeta"}
+        ],
+        complete_sentence: true,
+        word_roulette: false,
+        order_sentence: false
+    }
+
+    global_data = json
+    initGame()
 }
 
 
@@ -208,21 +255,19 @@ var animacion_init = null
 function initGame(){
 
     //print all data
-    nombre_game = global_data.nombre
-    titulo_final = global_data.titulo_final
-    mensaje_final = global_data.mensaje_final
-    titulo_final_mal = global_data.titulo_final_mal
-    mensaje_final_mal = global_data.mensaje_final_mal
-    titulo_instrucciones = global_data.titulo_instrucciones
-    mensaje_instrucciones = global_data.mensaje_instrucciones
-    numero_intentos = global_data.numero_intentos
+    nombre_game = global_data.title
+    titulo_final = global_data.title_message_final
+    mensaje_final = global_data.message_final
+    titulo_final_mal = global_data.title_message_reprobate
+    mensaje_final_mal = global_data.message_reprobate
+    titulo_instrucciones = "Instrucciones"
+    mensaje_instrucciones = ""
+    numero_intentos = 3
 
     getE('espacios-title').innerHTML = nombre_game
-    getE('instrucciones_title').innerHTML = titulo_instrucciones
-    getE('instrucciones_txt').innerHTML = mensaje_instrucciones
+    //getE('instrucciones_title').innerHTML = titulo_instrucciones
+    //getE('instrucciones_txt').innerHTML = mensaje_instrucciones
     getE('intentos_txt').innerHTML = numero_intentos
-
-    getE('instrucciones_txt').innerHTML = mensaje_instrucciones
     
     animacion_init = setTimeout(function(){
         clearTimeout(animacion_init)
